@@ -26,6 +26,7 @@ public class FormatText {
     private static final String HALAKHA = "Halakha";
     private static final String HALAKHIC = "halakhic";
     private static final String HALAKHICALLY = "halakhically";
+    private static final String HALAKHOT = "halakhot";
     private static final String HILKHOT = "hilkhot";
     private static final String LEKHATCHILA = "lekhatchila";
     private static final String LEMAASEH = "lema'aseh";
@@ -58,9 +59,9 @@ public class FormatText {
     private static final HashSet<String> italicizedHashSet() {
         String[] italicizedArr = { ARUKH, ASSUR, AVODAH_UNDERCASE, AVODAH_UPPERCASE, BEDIEVED, BEIT_YOSEF,
                 BERAKHAH_LOWER_CASE, BERAKHAH_CAPITALIZED, BERAKHOT, BERURAH, CHAYIM, CHOSHEN, CM, DEAH, EH, "Even",
-                HAEZER, HALAKHA, HALAKHIC, HALAKHICALLY, HILKHOT, LEKHATCHILA, LEMAASEH, MISHNAH, MISHNAH_BERURAH,
-                "mishnayot", "Mishpat", IGGROT_MOSHE, DE_ORAYTA, ORACH, SHAKH, "shas", SHULCHAN, SHULCHAN_ARUKH,
-                "sugyot", OC, PESACHIM, PESAK, TAAM, TESHUVA, TOSAFOT, TUR, YD, YOREH, ZARAH_UNDERCASE,
+                HAEZER, HALAKHA, HALAKHIC, HALAKHICALLY, HALAKHOT, HILKHOT, LEKHATCHILA, LEMAASEH, MISHNAH,
+                MISHNAH_BERURAH, "mishnayot", "Mishpat", IGGROT_MOSHE, DE_ORAYTA, ORACH, SHAKH, "shas", SHULCHAN,
+                SHULCHAN_ARUKH, "sugyot", OC, PESACHIM, PESAK, TAAM, TESHUVA, TOSAFOT, TUR, YD, YOREH, ZARAH_UNDERCASE,
                 ZARAH_UPPERCASE };
         HashSet<String> set = new HashSet<>();
         Collections.addAll(set, italicizedArr);
@@ -185,6 +186,8 @@ public class FormatText {
                 return HALAKHICALLY;
             case "hilchot":
                 return HILKHOT;
+            case "halachot":
+                return HALAKHOT;
             case "lechatchila":
                 return LEKHATCHILA;
             case "mincha":
