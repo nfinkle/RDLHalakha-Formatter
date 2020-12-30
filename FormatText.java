@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.HashSet;
 
@@ -31,17 +30,20 @@ public class FormatText {
     private static final String LEKHATCHILA = "lekhatchila";
     private static final String LEMAASEH = "lema'aseh";
     private static final String IGGROT_MOSHE = "Iggrot Moshe";
-    private static final String OC = "OC";
-    private static final String ORACH = "Orach";
-    private static final String SHAKH = "Shakh";
-    private static final String SHULCHAN = "Shulchan";
-    private static final String SHULCHAN_ARUKH = "Shulchan Arukh";
+    private static final String ISSUR = "issur";
+    private static final String MUTAR = "mutar";
     private static final String MISHNAH = "Mishnah";
     private static final String MISHNAH_BERURAH = "Mishnah Berurah";
+    private static final String OC = "OC";
+    private static final String ORACH = "Orach";
     private static final String PESACHIM = "Pesachim";
     private static final String PESAK = "pesak";
     private static final String SHABBAT = "Shabbat";
+    private static final String SHAKH = "Shakh";
+    private static final String SHULCHAN = "Shulchan";
+    private static final String SHULCHAN_ARUKH = "Shulchan Arukh";
     private static final String TESHUVA = "teshuva";
+    private static final String TESHUVOT = "teshuvot";
     private static final String TAAM = "ta'am";
     private static final String TOSAFOT = "Tosafot";
     private static final String TUR = "Tur";
@@ -59,10 +61,10 @@ public class FormatText {
     private static final HashSet<String> italicizedHashSet() {
         String[] italicizedArr = { ARUKH, ASSUR, AVODAH_UNDERCASE, AVODAH_UPPERCASE, BEDIEVED, BEIT_YOSEF,
                 BERAKHAH_LOWER_CASE, BERAKHAH_CAPITALIZED, BERAKHOT, BERURAH, CHAYIM, CHOSHEN, CM, DEAH, EH, "Even",
-                HAEZER, HALAKHA, HALAKHIC, HALAKHICALLY, HALAKHOT, HILKHOT, LEKHATCHILA, LEMAASEH, MISHNAH,
-                MISHNAH_BERURAH, "mishnayot", "Mishpat", IGGROT_MOSHE, DE_ORAYTA, ORACH, SHAKH, "shas", SHULCHAN,
-                SHULCHAN_ARUKH, "sugyot", OC, PESACHIM, PESAK, TAAM, TESHUVA, TOSAFOT, TUR, YD, YOREH, ZARAH_UNDERCASE,
-                ZARAH_UPPERCASE };
+                HAEZER, HALAKHA, HALAKHIC, HALAKHICALLY, HALAKHOT, HILKHOT, "kashrut", "Kashrut", LEKHATCHILA, LEMAASEH,
+                MUTAR, MISHNAH, MISHNAH_BERURAH, "mishnayot", "Mishnayot", "Mishpat", IGGROT_MOSHE, ISSUR, DE_ORAYTA,
+                ORACH, SHAKH, "shas", "Shas", SHULCHAN, SHULCHAN_ARUKH, "sugyot", "Sugyot", OC, PESACHIM, PESAK, TAAM,
+                TESHUVA, TESHUVOT, TOSAFOT, TUR, YD, YOREH, ZARAH_UNDERCASE, ZARAH_UPPERCASE };
         HashSet<String> set = new HashSet<>();
         Collections.addAll(set, italicizedArr);
         return set;
@@ -156,6 +158,8 @@ public class FormatText {
             case "le'mayseh":
             case "lema'ase":
                 return LEMAASEH;
+            case "muttar":
+                return MUTAR;
             case "Mishna":
             case "Mishne":
             case "Mishneh":
@@ -206,19 +210,27 @@ public class FormatText {
             case "IM":
             case "Igrot Moshe":
                 return IGGROT_MOSHE;
+            case "isur":
+                return ISSUR;
             case "Shabbos":
                 return SHABBAT;
             case "psak":
                 return PESAK;
             case "psachim":
+            case "psahim":
             case "psakhim":
+            case "pesahim":
             case "pesakhim":
             case "Psachim":
+            case "Psahim":
             case "Psakhim":
+            case "Pesahim":
             case "Pesakhim":
                 return PESACHIM;
             case "taam":
                 return TAAM;
+            case "tshuvot":
+                return TESHUVOT;
             case "tshuva":
             case "tshuvah":
             case "teshuvah":
