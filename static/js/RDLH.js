@@ -23,11 +23,15 @@ function format() {
 					$.ajax(this);
 					return;
 				}
+				else {
+					console.log(error);
+					$('button').prop("disabled", false);
+				}
 			}
 		},
 		success: function (result) {
 	        document.getElementById("HTML_STUFF").innerHTML = result;
-			$('button').prop("disabled", false)
+			$('button').prop("disabled", false);
 		}
 	})
 }
