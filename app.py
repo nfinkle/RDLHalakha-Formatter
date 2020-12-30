@@ -10,6 +10,7 @@ from static.CASClient import CASClient
 
 app = Flask(__name__)
 app.secret_key = os.urandom(64)
+q = rq.Queue(connection=worker.conn)
 
 
 @app.route('/health', methods=['GET'])
