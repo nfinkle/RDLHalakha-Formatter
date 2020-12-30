@@ -277,7 +277,7 @@ public class FormatText {
             cNew = in.read();
         }
         if (hasNewLine && Character.UnicodeBlock.of(cNew) == Character.UnicodeBlock.HEBREW) {
-            System.out.printf("%n%s%c", "<p> dir=\"rtl\"", cNew);
+            System.out.printf("%n%s%c", "<p dir=\"rtl\"> dir=\"rtl\"", cNew);
             for (cNew = in.read(); Character.UnicodeBlock.of(cNew) == Character.UnicodeBlock.HEBREW
                     || isPunctuation(cNew) || Character.isWhitespace(cNew); cNew = in.read()) {
                 if ((char) cNew == '\n' || (char) cNew == '\r') {

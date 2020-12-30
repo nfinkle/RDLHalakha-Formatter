@@ -4,7 +4,7 @@ function format() {
 	console.log(document.getElementById("HTML_STUFF").innerText);
 	document.getElementById("HTML_STUFF").innerHTML = "";
 	$.ajax({
-		url: "/RDLH_formatter",
+		url: "/format",
 		type: "POST",
 		async: true,
 		cache: false,

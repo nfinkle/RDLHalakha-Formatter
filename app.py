@@ -33,7 +33,7 @@ def runner(text):
         return out.read()
 
 
-@app.route('/RDLH_formatter', methods=['POST'])
+@app.route('/format', methods=['POST'])
 def formatter():
     args = request.get_json()
     text = args['text']
