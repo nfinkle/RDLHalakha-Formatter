@@ -14,8 +14,8 @@ public class FormatText {
     private static final String BEDIEVED = "bedieved";
     private static final String BEIT_YOSEF = "Beit Yosef";
     private static final String BEIN = "Bein";
-    private static final String BELIAH = "beli'ah";
-    private static final String BELIAT = "beli'at";
+    private static final String BELIAH = "beliah";
+    private static final String BELIAT = "beliat";
     private static final String BELIOT = "beli'ot";
     private static final String BERAKHAH_LOWER_CASE = "berakhah";
     private static final String BERAKHAH_CAPITALIZED = "Berakhah";
@@ -40,7 +40,8 @@ public class FormatText {
     private static final String HASHACHAR = "HaShachar";
     private static final String HASHULCHAN = "HaShulchan";
     private static final String HILKHOT = "hilkhot";
-    private static final String KERIAT = "keri'at";
+    private static final String KERIAH = "keriah";
+    private static final String KERIAT = "keriat";
     private static final String KOKHAVIM = "kokhavim";
     private static final String LEKHATCHILA = "lekhatchila";
     private static final String LEMAASEH = "lema'aseh";
@@ -58,8 +59,8 @@ public class FormatText {
     private static final String SEIF = "se'if";
     private static final String SHABBAT = "Shabbat";
     private static final String SHAKH = "Shakh";
-    private static final String SHEKIAH = "Sheki'ah";
-    private static final String SHEKIAT = "Sheki'at";
+    private static final String SHEKIAH = "Shekiah";
+    private static final String SHEKIAT = "Shekiat";
     private static final String SHULCHAN = "Shulchan";
     private static final String SHULCHAN_ARUKH = "Shulchan Arukh";
     private static final String TAAM = "ta'am";
@@ -86,10 +87,10 @@ public class FormatText {
                 BEIT_YOSEF, BELIAH, BELIAT, BELIOT, BERAKHAH_LOWER_CASE, BERAKHAH_CAPITALIZED, BERAKHOT, BERURAH,
                 CHAYIM, CHOSHEN, CM, DEAH, DE_ORAYTA, EH, "Even", HACHAMAH, HAEZER, HAKOKHAVIM, HALAKHA, HALAKHIC,
                 HALAKHICALLY, HALAKHOT, HAKOKHAVIM, HANEITZ, HASHACHAR, HASHEMASHOT, HASHULCHAN, HILKHOT, IGGROT_MOSHE,
-                ISSUR, "kashrut", "Kashrut", KOKHAVIM, LEKHATCHILA, LEMAASEH, MUTAR, MISHNAH, MISHNAH_BERURAH,
-                "mishnayot", "Mishnayot", "Mishpat", OC, ORACH, PESACHIM, PESAK, PLAG, PRI, SEIF, SHAKH, "shas", "Shas",
-                SHEKIAH, SHEKIAT, SHULCHAN, SHULCHAN_ARUKH, "sugyot", "Sugyot", TAAM, TESHUVA, TESHUVOT, TOSAFOT, TUR,
-                TZEIT, TZIBUR, YD, YEISH, YOREH, ZARAH_UNDERCASE, ZARAH_UPPERCASE };
+                ISSUR, "kashrut", "Kashrut", KERIAH, KERIAT, KOKHAVIM, LEKHATCHILA, LEMAASEH, MUTAR, MISHNAH,
+                MISHNAH_BERURAH, "mishnayot", "Mishnayot", "Mishpat", OC, ORACH, PESACHIM, PESAK, PLAG, PRI, SEIF,
+                SHAKH, "shas", "Shas", SHEKIAH, SHEKIAT, SHULCHAN, SHULCHAN_ARUKH, "sugyot", "Sugyot", TAAM, TESHUVA,
+                TESHUVOT, TOSAFOT, TUR, TZEIT, TZIBUR, YD, YEISH, YOREH, ZARAH_UNDERCASE, ZARAH_UPPERCASE };
         HashSet<String> set = new HashSet<>();
         Collections.addAll(set, italicizedArr);
         return set;
@@ -132,11 +133,19 @@ public class FormatText {
             case "bayn":
                 return BEIN;
             case "bliyah":
-            case "bli'ah":
+            case "bliah":
             case "beliyah":
+            case "belia":
+            case "beliya":
+            case "bliya":
+            case "blia":
+            case "bli'a":
+            case "beli'ah":
+            case "beli'a":
                 return BELIAH;
             case "bliyat":
             case "bli'at":
+            case "beli'at":
             case "beliyat":
                 return BELIAT;
             case "bliyot":
@@ -262,8 +271,14 @@ public class FormatText {
                 return IGGROT_MOSHE;
             case "isur":
                 return ISSUR;
+            case "keriyah":
+            case "keri'ah":
+            case "kriyah":
+            case "kriah":
+            case "kri'ah":
+                return KERIAH;
             case "keriyat":
-            case "keriat":
+            case "keri'at":
             case "kriyat":
             case "kriat":
             case "kri'at":
@@ -347,7 +362,7 @@ public class FormatText {
             case "shki'a":
             case "shki'ah":
             case "Shekia":
-            case "Shekiah":
+            case "Sheki'ah":
             case "Shekiya":
             case "Shekiyah":
             case "Sheki'a":
@@ -364,7 +379,6 @@ public class FormatText {
             case "shkiat":
             case "shkiyat":
             case "shki'at":
-            case "Shekiat":
             case "Shekiyat":
             case "Sheki'at":
             case "Shkiat":
