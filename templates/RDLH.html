@@ -1,8 +1,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
 <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
-<h3>Enter Text</h3>
 <div style="padding-left:10px;">
+    <h3>Enter Text</h3>
     <form id="code_form" spellcheck="false">
         <textarea id="form_textarea" style="font-size: 11px;" rows='16' cols='75'></textarea>
     </form>
@@ -10,6 +10,7 @@
 
     <br><br><br>
     <h3>Formatted Text</h3>
-    <div id="HTML_STUFF" style="padding-left:10px;"><em>Nothing yet.</em></div>
 </div>
+<div id="HTML_STUFF" style="padding-left:20px;"><em>Nothing yet.</em></div>
+
 <script src="{{ url_for('static', filename='js/RDLH.js') }}"></script>
