@@ -1,0 +1,40 @@
+{% extends "modules/module_base.html" %}
+
+<!-- head -->
+{% block pageTitle %}System.out/System.err{% endblock %}
+
+{% block pageDescription %}Learn System.out/System.err from StdOut in algs4{% endblock %}
+
+<!-- body -->
+{% block title %}System.out/System.err{% endblock %}
+{% block subtitle %}Printing; the equivalent to <code>StdOut</code> in <code>algs4</code>{% endblock %}
+
+{% set className = ["StdOut", "System.out"] %}
+{% block description %}
+<p><code>StdOut</code> (<a href="https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/StdOut.html">Javadoc
+		API</a>) works almost
+	identically
+	to <code>System.out</code> (<a href="https://docs.oracle.com/javase/8/docs/api/java/io/PrintStream.html">Javadoc
+		API</a>). One can
+	print to <code>stderr</code> the exact same way as printing to <code>stdout</code>, except that you use
+	<code>System.err</code> instead of <code>System.out</code>. </p>
+<p>The only
+	difference between <code>StdOut</code> and <code>System.out</code>/<code>System.err</code> is that
+	<code>StdOut</code>
+	flushes all output
+	immediately, while <code>System.out</code>/<code>System.err</code> buffers the output until a newline
+	character is added.</p>
+{% endblock %}
+
+{% set constructorCells = [  [{"description": "Initializes an empty symbol table with the default initial capacity (4)."|safe, "args": ""},{"description": "Initializes an empty <code>HashMap</code> with the default initial capacity (16)."|safe, "args": ""}],
+[{"description": "Initializes an empty symbol table with the specified capacity."|safe, "args": "</code>int
+<code>capacity"|safe},{"description": "Initializes an empty <code>HashMap</code> with the specified capacity."|safe,
+	"args": "</code>int <code>capacity"|safe}]
+] %}
+
+
+{% set cells = [[{"fname": "print", "type": "void", "description": "Print", "args": ""}, {"fname": "print", "type": "void", "description": "Print", "args": ""}] ] %}
+{% for builtInType in ["boolean", "int"] %}
+{% set temp = [{"fname": "print", "type": "void", "description": "Print a " + builtInType + " to <code>stdout</code> and flush."|safe, "args": "</code>"|safe + builtInType + "<code>"|safe}, {"fname": "print", "type": "void", "description": "Print a " + builtInType + " to <code>stdout</code>."|safe, "args": "</code>"|safe + builtInType + "<code>"|safe}]  %}
+{% set cells = cells.append(temp) %}
+{% endfor %}

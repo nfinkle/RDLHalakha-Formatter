@@ -1,0 +1,6 @@
+gunicorn
+flask
+flask_restx
+rq
+redis
+psycopg2

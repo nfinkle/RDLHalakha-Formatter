@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>{% block pageTitle %}{% endblock %} - algs4 to StdJava</title>
+	<meta charset="utf-8">
+	<meta name="description" content="{% block pageDescription %} {% endblock %}">
+	<meta name=" viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="{{ url_for('static', filename='favicon.ico')}}">
+	<meta name="author" content="Nathan Finkle">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+	<script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+	{% block thehead %} {% endblock %}
+</head>
+
+
+<body>
+	<!-- <div id="page_container"> -->
+	<div id="content-wrap">
+		{% include 'auth_navbar.html' %}
+		<div class="jumbotron">
+			<div class="container text-center">
+				<h1>{% block title %}{% endblock %}</h1>
+				<p>{% block subtitle %}{% endblock %}</p>
+				<!-- <div class="container text-center text-dark"> -->
+			</div>
+		</div>
+		{% block content %} {% endblock %}
+	</div>
+	<br><br>
+	<footer class="footer text-center bg-fav">
+		<div class="container">
+			<span class="text-white">algs4 to StdJava</span>
+		</div>
+	</footer>
+</body>
+
+</html>

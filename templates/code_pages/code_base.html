@@ -1,0 +1,99 @@
+{% extends "auth_base.html" %}
+{% block pageTitle %} {{class_name}} Translation Test {%- endblock %}
+{% block thehead %}
+<script src="{{ url_for('static', filename='js/prism.js') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/prism.css') }}" />
+<script src="{{ url_for('static', filename='js/code_base.js') }}"></script>
+<meta id="tests-data" data-name="tests-data" data-other="{{tests}}">
+<meta id="module" data-name="module" data-other="{{class_name}}">
+<meta id="username" data-name="username" data-other="{{username}}">
+
+{% endblock %}
+
+{% block title %}{{ class_name }}{% endblock %}
+{% block subtitle %}
+Test your ability to code with <code>{{class_name}}</code> by translating the program written using the
+<code>algs4</code>
+libraries into a program that uses only Standard Java Libraries.
+{% endblock %}
+{% block content %}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="d-xl-block d-none col-1"></div>
+		<div class="col-xl-10 col-12">
+			<div class="text-center">Find the API Comparisons for <code>{{ class_name}}</code> <a
+					href="{{ api_url }}">here</a>. {{content}}
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-12 col-lg-6">
+					<h3 class="text-center"><code>algs4</code></h3>
+					<pre class="line-numbers"
+						style="white-space:pre-wrap; font-size:11px;"><code class="language-java match-braces" id="algs4_code">{{ algs4_content }}</code></pre>
+					<button type="button" class="btn btn-primary" onclick="execute_algs4()">Execute</button>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 d-lg-none"><br></div>
+				<div class="col-12 col-lg-6" id="stdjava_code">
+					<h3 class="text-center">Standard Java Library</h3>
+					<form id="code_form" spellcheck="false">
+						<p>
+							<!-- The equivalent code using only Standard Java Libraries. -->
+							<textarea id="form_textarea" style="font-size: 11px;"
+								rows='16'>{{ stdjava_code }}</textarea>
+							<button type="button" class="btn btn-primary" onclick="compile()">Compile</button>
+						</p>
+					</form>
+				</div>
+			</div>
+			<br>
+			<form spellcheck="false">
+				<div class="row">
+					<div class="col-6">Command line arguments:
+						<!-- The equivalent code using only Standard Java Libraries. -->
+						<textarea id="command_args"
+							style="font-size: 11px; height:50px">{{ default_command_args }}</textarea>
+					</div>
+					<div class="col-6">
+						Standard Input:
+						<textarea id="stdin" style="font-size: 11px; height:50px;">{{ default_stdin }}</textarea></div>
+				</div>
+			</form>
+			<br><br>
+			<div class="row">
+				<div class="col" id="algs4_output">
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="d-none" id="trials"></div>
+<!-- Modal -->
+<div class="modal fade" id="answer_code" tabindex="-1" role="dialog" aria-labelledby="answer_code" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Answer</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				{% for line in answer.split('\n') %}
+				<div>
+					{% for word in line.split('   ') %}
+					{{word}}&nbsp;&nbsp;&nbsp;
+					{% endfor %}
+				</div>
+				{% endfor %}
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="{{ url_for('static', filename='js/allow_tab.js') }}"></script>
+<script src="{{ url_for('static', filename='js/code_base.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,14 @@
+<!-- <script src="{{ url_for('static', filename='js/RDLH.js') }}"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+<script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+<h1>Enter Text</h1>
+<form id="code_form" spellcheck="false">
+    <p>
+        <textarea id="form_textarea" style="font-size: 11px;" rows='16' cols='75'></textarea>
+        <button type="button" class="btn btn-primary" onclick="format()">Format</button>
+    </p>
+</form>
+<h1>Formatted Text</h1>
+<div id="HTML_STUFF"></div>
+<script src="{{ url_for('static', filename='js/RDLH.js') }}"></script>
