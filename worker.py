@@ -7,7 +7,7 @@ listen = ['high', 'default', 'low']
 
 # redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
 # redis_url = os.getenv('REDISTOGO_URL', 'redis://redistogo:78d62750fe7a926bceed7828fd46c454@crestfish.redistogo.com:11719/')
-redis_url = "redis: // redistogo: 4a34bb7c5d2314caefe22c724a4cc7b8@scat.redistogo.com: 10966/"
+redis_url = "redis://redistogo:4a34bb7c5d2314caefe22c724a4cc7b8@scat.redistogo.com:10966/"
 conn = redis.from_url(redis_url)
 
 if __name__ == '__main__':
