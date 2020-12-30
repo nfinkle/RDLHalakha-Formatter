@@ -31,6 +31,7 @@ function format() {
 			}
 		},
 		success: function (result) {
+			console.log(result);
 	        document.getElementById("HTML_STUFF").innerHTML = result;
 			$('button').prop("disabled", false);
 		}
