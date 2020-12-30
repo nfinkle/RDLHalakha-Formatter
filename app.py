@@ -24,40 +24,49 @@ def handle_bad_request(e):
     return render_template('404_error.html', e=e.description), 404
 
 
-if __name__ == "__main__":
-    app.run(debug=True, development=True)
-    RDLH()
-
-
-def RDLH_runner(text):
+def runner(text):
     import os
-    with open("RDLH_in.txt", "w+") as input_text:
+    with open("RDLH_in.txt", "w") as input_text:
         input_text.write(text)
-    os.system("javac FormatText.java")
     os.system("java FormatText < RDLH_in.txt > RDLH_out.txt")
     with open("RDLH_out.txt", "r") as out:
-        output = out.read()
-        print("\n")
-        print(output)
-        return output
-    return "problem!"
+        return out.read()
 
 
 @app.route('/RDLH_formatter', methods=['POST'])
-def run_RDLH_formatter():
+def formatter():
     args = request.get_json()
     text = args['text']
 
     with open("RDLH_in.txt", "w+") as input_text:
         input_text.write(text)
 
-    job = q.enqueue(RDLH_runner, args=(text,), result_ttl=10)
+    job = q.enqueue(runner, args=(text,), result_ttl=10)
     start = time.time()
-    while job.result is None and time.time() - start < 20:
+    while job.result is None and time.time() - start < 10:
         continue
     return jsonify(job.result)
 
 
 @app.route('/', methods=['GET'])
-def RDLH():
+def format_page():
     return render_template('RDLH.html')
+
+
+def compile_runner():
+    os.system("javac FormatText.java")
+    return "Success!"
+
+
+@app.route('/compile')
+def compile_page():
+    job = q.enqueue(compile_runner, result_ttl=10)
+    start = time.time()
+    while job.result is None and time.time() - start < 10:
+        continue
+    return job.result
+
+
+if __name__ == "__main__":
+    app.run(debug=True, development=True)
+    format_page()
