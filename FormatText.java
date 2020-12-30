@@ -285,7 +285,6 @@ public class FormatText {
                     while (Character.isWhitespace(cNext)) {
                         cNext = in.read();
                     }
-                    System.err.printf("Next:%c\n", (char) cNext);
                     if (Character.UnicodeBlock.of(cNext) == Character.UnicodeBlock.HEBREW) {
                         System.out.print("<br>dir=\"rtl\"");
                     } else {

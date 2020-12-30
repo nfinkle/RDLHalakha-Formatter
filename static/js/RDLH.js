@@ -20,6 +20,7 @@ function format() {
 			if (textStatus == 'timeout') {
 				this.moreTries--;
 				if (this.moreTries > 0) {
+					console.log("Trying again.")
 					$.ajax(this);
 					return;
 				}
