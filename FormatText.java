@@ -317,7 +317,11 @@ public class FormatText {
             case "hashulkhan":
             case "Hashulkhan":
                 return HASHULCHAN;
-                case "ha'Torah": case "Ha'Torah": case "ha'torah": case "hatorah" return HATORAH;
+            case "ha'Torah":
+            case "Ha'Torah":
+            case "ha'torah":
+            case "hatorah":
+                return HATORAH;
             case "hatzibbur":
             case "haTzibbur":
             case "Hatzibbur":
