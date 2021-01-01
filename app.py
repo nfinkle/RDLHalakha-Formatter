@@ -28,6 +28,7 @@ def runner(text):
     import os
     with open("RDLH_in.txt", "w") as input_text:
         input_text.write(text)
+    os.system("javac FormatText.java")
     os.system("java FormatText < RDLH_in.txt > RDLH_out.txt")
     with open("RDLH_out.txt", "r") as out:
         return out.read()
@@ -51,20 +52,6 @@ def formatter():
 @app.route('/', methods=['GET'])
 def format_page():
     return render_template('RDLH.html')
-
-
-def compile_runner():
-    os.system("javac FormatText.java")
-    return "Success!"
-
-
-@app.route('/compile')
-def compile_page():
-    job = q.enqueue(compile_runner, result_ttl=10)
-    start = time.time()
-    while job.result is None and time.time() - start < 10:
-        continue
-    return job.result
 
 
 if __name__ == "__main__":
