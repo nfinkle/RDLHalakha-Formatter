@@ -66,7 +66,8 @@ public class FormatText {
     private static final String HILKHOT = "hilkhot";
     private static final String KELI = "keli";
     private static final String KEILIM = "keilim";
-    private static final String KENESSET = "kenesset";
+    private static final String KENESET_LOWERCASE = "keneset";
+    private static final String KENESET_UPPERCASE = "Keneset";
     private static final String KERIAH = "keriah";
     private static final String KERIAT = "keriat";
     private static final String KOKHAVIM = "kokhavim";
@@ -105,12 +106,14 @@ public class FormatText {
     private static final String SHALIACH_UPPERCASE = "Shaliach";
     private static final String SHEKIAH = "Shekiah";
     private static final String SHEKIAT = "Shekiat";
+    private static final String SHETAR = "shetar";
     private static final String SHITAH = "shitah";
     private static final String SHITOT = "shitot";
     private static final String SHIVA = "shiva";
     private static final String SHLITA = "shlita";
     private static final String SHULCHAN = "Shulchan";
     private static final String SHULCHAN_ARUKH = "Shulchan Arukh";
+    private static final String SKHAR = "skhar";
     private static final String SIMCHAH = "simchah";
     private static final String SNIF = "snif";
     private static final String SOLEDET = "soledet";
@@ -146,14 +149,14 @@ public class FormatText {
                 CHADASH, CHAYIM, CHOSHEN, CM, DEAH, DE_ORAYTA, DERABANAN, EIDIM, EINO, EH, "Even", FLEISHIG, "frum",
                 GOYIM, GRAMA, HACHAMAH, HAEZER, HAKOKHAVIM, HALAKHA, HALAKHIC, HALAKHICALLY, HALAKHOT, HANEITZ,
                 HASHACHAR, HASHEMASHOT, HASHULCHAN, HATORAH, HATZIBUR, HEKHSHER, HETER, HILKHOT, IGGROT_MOSHE, ISSUR,
-                "kashrut", "Kashrut", KELI, KEILIM, KENESSET, KERIAH, KERIAT, "klaf", KOKHAVIM, LEHACHMIR, LEHAKEIL,
-                LEIN, LEINED, LEINING, LEKHATCHILA, LEMAASEH, MEGILLAH, "mikdash", "Mikdash", MILA, MILKHIG, "minyan",
-                "Minyan", MISHNAH, MISHNAH_BERURAH, "mishnayot", "Mishnayot", "Mishpat", MUTAR, OC, OMER_LOWERCASE,
-                OMER_UPPERCASE, ORACH, PAREVE, PESACHIM, PESAK, PLAG, POSKIM, PRI, RISHONIM, SEIF, SHAKH,
-                SHALIACH_LOWERCASE, SHALIACH_UPPERCASE, "shas", "Shas", SHEKIAH, SHEKIAT, SHITAH, SHITOT, SHIVA, "shul",
-                SHULCHAN, SHULCHAN_ARUKH, SHLITA, SIMCHAH, SNIF, SOLEDET, "sugyot", "Sugyot", TAAM, TEFILAH, TESHUVA,
-                TESHUVOT, TEVILAH, TEVILAT, TOSAFOT, TOVEL, TREIF, TUR, TZEIT, TZIBUR, YABIA, "yad", YD, YEISH, "yomo",
-                YOREH, "yotzei", ZARAH_UNDERCASE, ZARAH_UPPERCASE };
+                "kashrut", "Kashrut", KELI, KEILIM, KENESET_LOWERCASE, KENESET_UPPERCASE, KERIAH, KERIAT, "klaf",
+                KOKHAVIM, LEHACHMIR, LEHAKEIL, LEIN, LEINED, LEINING, LEKHATCHILA, LEMAASEH, MEGILLAH, "mikdash",
+                "Mikdash", MILA, MILKHIG, "minyan", "Minyan", MISHNAH, MISHNAH_BERURAH, "mishnayot", "Mishnayot",
+                "Mishpat", MUTAR, OC, OMER_LOWERCASE, OMER_UPPERCASE, ORACH, PAREVE, PESACHIM, PESAK, PLAG, POSKIM, PRI,
+                RISHONIM, SEIF, SHAKH, SHALIACH_LOWERCASE, SHALIACH_UPPERCASE, "shas", "Shas", SHEKIAH, SHEKIAT, SHETAR,
+                SHITAH, SHITOT, SHIVA, "shul", SHULCHAN, SHULCHAN_ARUKH, SHLITA, SIMCHAH, SKHAR, SNIF, SOLEDET,
+                "sugyot", "Sugyot", TAAM, TEFILAH, TESHUVA, TESHUVOT, TEVILAH, TEVILAT, TOSAFOT, TOVEL, TREIF, TUR,
+                TZEIT, TZIBUR, YABIA, "yad", YD, YEISH, "yomo", YOREH, "yotzei", ZARAH_UNDERCASE, ZARAH_UPPERCASE };
         HashSet<String> set = new HashSet<>();
         Collections.addAll(set, italicizedArr);
         return set;
@@ -427,8 +430,10 @@ public class FormatText {
                 return KEILIM;
             case "kli":
                 return KELI;
-            case "keneset":
-                return KENESSET;
+            case "Kenesset":
+                return KENESET_UPPERCASE;
+            case "kenesset":
+                return KENESET_LOWERCASE;
             case "keriyah":
             case "keri'ah":
             case "kriyah":
@@ -596,10 +601,16 @@ public class FormatText {
             case "Shkiyat":
             case "Shki'at":
                 return SHEKIAT;
+            case "shtar":
+                return SHETAR;
             case "Shulkhan":
                 return SHULCHAN;
             case "SA":
                 return SHULCHAN_ARUKH;
+            case "sechar":
+            case "sekhar":
+            case "schar":
+                return SKHAR;
             case "soleddet":
                 return SOLEDET;
             case "taam":
