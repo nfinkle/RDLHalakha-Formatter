@@ -287,6 +287,22 @@ public class FormatText {
             case "Chanukka":
             case "chanukkah":
             case "Chanukkah":
+            case "hannuka":
+            case "Hannuka":
+            case "hannukah":
+            case "Hannukah":
+            case "hannukka":
+            case "Hannukka":
+            case "hannukkah":
+            case "Hannukkah":
+            case "hanuka":
+            case "Hanuka":
+            case "hanukah":
+            case "Hanukah":
+            case "hanukka":
+            case "Hanukka":
+            case "hanukkah":
+            case "Hanukkah":
                 return CHANUKAH;
             case "Chayyim":
             case "Hayim":
