@@ -241,14 +241,22 @@ public class FormatText {
             case "brachah":
             case "brakhah":
             case "berachah":
+            case "b'racha":
+            case "b'rachah":
+            case "b'rakha":
+            case "b'rakhah":
                 return BERAKHAH_LOWER_CASE;
+            case "berachot":
             case "brachot":
             case "brakhot":
-            case "berachot":
+            case "b'rachot":
+            case "b'rakhot":
                 return BERAKHOT_LOWERCASE;
+            case "Berachot":
             case "Brachot":
             case "Brakhot":
-            case "Berachot":
+            case "B'rachot":
+            case "B'rakhot":
                 return BERAKHOT_UPPERCASE;
             case "b'rabbim":
             case "b'rabim":
@@ -266,9 +274,16 @@ public class FormatText {
                 return BEIT_YOSEF;
             case "bittul":
                 return BITUL;
+            case "berit":
+            case "beris":
+            case "Beris":
             case "brit":
             case "bris":
             case "Bris":
+            case "b'rit":
+            case "B'rit":
+            case "b'ris":
+            case "B'ris":
                 return BRIT;
             case "Khadash":
                 return CHADASH;
@@ -317,10 +332,16 @@ public class FormatText {
             case "De'a":
                 return DEAH;
             case "de'oraita":
-            case "di'oraita":
             case "de'oraitta":
+            case "de'oraytta":
+            case "di'oraita":
             case "di'oraitta":
             case "di'orayta":
+            case "di'oraytta":
+            case "d'oraita":
+            case "d'oraitta":
+            case "d'orayta":
+            case "d'oraytta":
                 return DE_ORAYTA;
             case "de'rabanan":
             case "di'rabanan":
@@ -455,12 +476,15 @@ public class FormatText {
             case "kriyah":
             case "kriah":
             case "kri'ah":
+            case "k'riya":
+            case "k'riyah":
                 return KERIAH;
             case "keriyat":
             case "keri'at":
             case "kriyat":
             case "kriat":
             case "kri'at":
+            case "k'riyat":
                 return KERIAT;
             case "cochavim":
             case "cokhavim":
@@ -469,10 +493,14 @@ public class FormatText {
             case "lehakhmir":
             case "le'hachmir":
             case "le'hakhmir":
+            case "l'hachmir":
+            case "l'hakhmir":
                 return LEHACHMIR;
             case "lehakel":
             case "le'hakeil":
             case "le'hakel":
+            case "l'hakel":
+            case "l'hakeil":
                 return LEHAKEIL;
             case "layn":
                 return LEIN;
@@ -487,6 +515,10 @@ public class FormatText {
             case "lichatkhila":
             case "likhatchila":
             case "likhatkhila":
+            case "l'chatchila":
+            case "l'chatkhila":
+            case "l'khatchila":
+            case "l'khatkhila":
                 return LEKHATCHILA;
             case "li'maase":
             case "li'mayse":
@@ -505,6 +537,10 @@ public class FormatText {
             case "le'ma'aseh":
             case "le'mayseh":
             case "lema'ase":
+            case "l'maase":
+            case "l'maaseh":
+            case "l'ma'ase":
+            case "l'ma'aseh":
                 return LEMAASEH;
             case "Maariv":
             case "maariv":
@@ -548,17 +584,25 @@ public class FormatText {
             case "Orakh":
                 return ORACH;
             case "psak":
+            case "p'sak":
                 return PESAK;
-            case "psachim":
-            case "psahim":
-            case "psakhim":
+            case "pesachim":
             case "pesahim":
-            case "pesakhim":
-            case "Psachim":
-            case "Psahim":
-            case "Psakhim":
             case "Pesahim":
+            case "pesakhim":
             case "Pesakhim":
+            case "psachim":
+            case "Psachim":
+            case "psahim":
+            case "Psahim":
+            case "psakhim":
+            case "Psakhim":
+            case "p'sachim":
+            case "P'sachim":
+            case "p'sakhim":
+            case "P'sakhim":
+            case "p'sahim":
+            case "P'sahim":
                 return PESACHIM;
             case "plag":
                 return PLAG;
@@ -576,8 +620,20 @@ public class FormatText {
             case "Shakharis":
                 return SHACHARIT;
             case "shaliakh":
+            case "sheliach":
+            case "sheliakh":
+            case "shliach":
+            case "shliakh":
+            case "sh'liach":
+            case "sh'liakh":
                 return SHALIACH_LOWERCASE;
             case "Shaliakh":
+            case "Sheliach":
+            case "Sheliakh":
+            case "Shliach":
+            case "Shliakh":
+            case "Sh'liach":
+            case "Sh'liakh":
                 return SHALIACH_UPPERCASE;
             case "Shach":
                 return SHAKH;
@@ -593,6 +649,12 @@ public class FormatText {
             case "shkiyah":
             case "shki'a":
             case "shki'ah":
+            case "sh'kia":
+            case "sh'kiah":
+            case "sh'kiya":
+            case "sh'kiyah":
+            case "sh'ki'a":
+            case "sh'ki'ah":
             case "Shekia":
             case "Sheki'ah":
             case "Shekiya":
@@ -604,6 +666,12 @@ public class FormatText {
             case "Shkiyah":
             case "Shki'a":
             case "Shki'ah":
+            case "Sh'kia":
+            case "Sh'kiah":
+            case "Sh'kiya":
+            case "Sh'kiyah":
+            case "Sh'ki'a":
+            case "Sh'ki'ah":
                 return SHEKIAH;
             case "shekiat":
             case "shekiyat":
@@ -611,13 +679,20 @@ public class FormatText {
             case "shkiat":
             case "shkiyat":
             case "shki'at":
+            case "sh'kiat":
+            case "sh'kiyat":
+            case "sh'ki'at":
             case "Shekiyat":
             case "Sheki'at":
             case "Shkiat":
             case "Shkiyat":
             case "Shki'at":
+            case "Sh'kiat":
+            case "Sh'kiyat":
+            case "Sh'ki'at":
                 return SHEKIAT;
             case "shtar":
+            case "sh'tar":
                 return SHETAR;
             case "Shulkhan":
                 return SHULCHAN;
@@ -626,6 +701,8 @@ public class FormatText {
             case "sechar":
             case "sekhar":
             case "schar":
+            case "s'char":
+            case "s'khar":
                 return SKHAR;
             case "soleddet":
                 return SOLEDET;
@@ -638,12 +715,19 @@ public class FormatText {
             case "tfilah":
             case "tfilla":
             case "tfillah":
+            case "t'fila":
+            case "t'filah":
+            case "t'filla":
+            case "t'fillah":
                 return TEFILAH;
             case "tshuva":
             case "tshuvah":
+            case "t'shuva":
+            case "t'shuvah":
             case "teshuvah":
                 return TESHUVA;
             case "tshuvot":
+            case "t'shuvot":
                 return TESHUVOT;
             case "tevila":
             case "tevilla":
@@ -652,10 +736,16 @@ public class FormatText {
             case "tvilah":
             case "tvilla":
             case "tvillah":
+            case "t'vila":
+            case "t'vilah":
+            case "t'villa":
+            case "t'villah":
                 return TEVILAH;
             case "tevillat":
             case "tvilat":
             case "tvillat":
+            case "t'vilat":
+            case "t'villat":
                 return TEVILAT;
             case "Tosfot":
             case "Tosphot":
