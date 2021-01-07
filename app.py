@@ -54,6 +54,13 @@ def format_page():
     return render_template('RDLH.html')
 
 
+@app.route('/italicized-words')
+def italicized_words():
+    with open("AutoCorrect.java") as ac:
+        words = ac.read().split(" ")
+    return jsonify(words)
+
+
 if __name__ == "__main__":
     app.run(debug=True, development=True)
     format_page()
