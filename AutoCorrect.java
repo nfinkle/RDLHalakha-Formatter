@@ -62,7 +62,7 @@ public class AutoCorrect {
     private static final String HASHULCHAN = "HaShulchan";
     private static final String HATORAH = "HaTorah";
     private static final String HATZIBUR = "HaTzibur";
-    private static final String HEFSEK = "hefsek";
+    private static final String HEFSEIK = "hefseik";
     private static final String HEKHSHER = "hekhsher";
     private static final String HETER = "heter";
     private static final String HILKHOT = "hilkhot";
@@ -94,6 +94,7 @@ public class AutoCorrect {
     private static final String OMER_UPPERCASE = "Omer";
     private static final String ORACH = "Orach";
     private static final String PAREVE = "pareve";
+    private static final String PARASHAH = "parashah";
     private static final String PESACHIM = "Pesachim";
     private static final String PESAK = "pesak";
     private static final String PLAG = "Plag";
@@ -106,8 +107,10 @@ public class AutoCorrect {
     private static final String SHAKH = "Shakh";
     private static final String SHALIACH_LOWERCASE = "shaliach";
     private static final String SHALIACH_UPPERCASE = "Shaliach";
+    private static final String SHEINI = "sheini";
     private static final String SHEKIAH = "Shekiah";
     private static final String SHEKIAT = "Shekiat";
+    private static final String SHELISHI = "shelishi";
     private static final String SHETAR = "shetar";
     private static final String SHITAH = "shitah";
     private static final String SHITOT = "shitot";
@@ -147,16 +150,16 @@ public class AutoCorrect {
                 BERAKHAH_CAPITALIZED, BERAKHOT_LOWERCASE, BERAKHOT_UPPERCASE, BERABIM, BERURAH, BITUL, BISHUL, BO,
                 CHADASH, CHAYIM, CHINUKH, CHOSHEN, CM, DAAT, DEAH, DE_ORAYTA, DERABANAN, EIDIM, EINO, EH, "Even",
                 FLEISHIG, "frum", GOYIM, GRAMA, HACHAMAH, HADAAT, HAEZER, HAKOKHAVIM, HALAKHA, HALAKHOT, HANEITZ,
-                HASHACHAR, HASHEMASHOT, HASHULCHAN, HATORAH, HATZIBUR, HEFSEK, HEKHSHER, HETER, HILKHOT, IGGROT_MOSHE,
+                HASHACHAR, HASHEMASHOT, HASHULCHAN, HATORAH, HATZIBUR, HEFSEIK, HEKHSHER, HETER, HILKHOT, IGGROT_MOSHE,
                 ISSUR, "kashrut", "Kashrut", KELI, KEILIM, KENESET_LOWERCASE, KENESET_UPPERCASE, KERIAH, KERIAT, "klaf",
                 KOKHAVIM, LEHACHMIR, LEHAKEIL, LEIN, LEKHATCHILA, LEMAASEH, MEGILLAH, "mikdash", "Mikdash", MILA,
                 MILKHIG, "minyan", "Minyan", MISHNAH, MISHNAH_BERURAH, "mishnayot", "Mishnayot", "Mishpat", MUTAR, OC,
-                OMER_LOWERCASE, OMER_UPPERCASE, ORACH, PAREVE, PESACHIM, PESAK, PLAG, POSKIM, PRI, RISHONIM, SEIF,
-                SHAKH, SHALIACH_LOWERCASE, SHALIACH_UPPERCASE, "shas", "Shas", SHEKIAH, SHEKIAT, SHETAR, SHITAH, SHITOT,
-                SHIVA, "shul", SHULCHAN, SHULCHAN_ARUKH, SHLITA, SILUK, SIMCHAH, SKHAR, SNIF, SOLEDET, "sugyot",
-                "Sugyot", TAAM, TALLIT, TEFILAH, TEFILLIN, TESHUVA, TESHUVOT, TEVILAH, TEVILAT, TOSAFOT, TOVEL, TREIF,
-                TUR, TZEIT, TZIBUR, YABIA, "yad", YD, YEISH, "yomo", YOREH, "yotzei", ZARAH_UNDERCASE,
-                ZARAH_UPPERCASE };
+                OMER_LOWERCASE, OMER_UPPERCASE, ORACH, PARASHAH, PAREVE, PESACHIM, PESAK, PLAG, POSKIM, PRI, "rishon",
+                RISHONIM, SEIF, SHAKH, SHALIACH_LOWERCASE, SHALIACH_UPPERCASE, "shas", "Shas", SHEINI, SHEKIAH, SHEKIAT,
+                SHELISHI, SHETAR, SHITAH, SHITOT, SHIVA, "shul", SHULCHAN, SHULCHAN_ARUKH, SHLITA, SILUK, SIMCHAH,
+                SKHAR, SNIF, SOLEDET, "sugyot", "Sugyot", TAAM, TALLIT, TEFILAH, TEFILLIN, TESHUVA, TESHUVOT, TEVILAH,
+                TEVILAT, TOSAFOT, TOVEL, TREIF, TUR, TZEIT, TZIBUR, YABIA, "yad", YD, YEISH, "yomo", YOREH, "yotzei",
+                ZARAH_UNDERCASE, ZARAH_UPPERCASE };
         HashSet<String> set = new HashSet<>();
         Collections.addAll(set, italicizedArr);
         return set;
@@ -441,10 +444,10 @@ public class AutoCorrect {
             case "Hatzibur":
             case "haTzibur":
                 return HATZIBUR;
-            case "hefseik":
+            case "hefsek":
             case "hephseik":
             case "hephsek":
-                return HEFSEK;
+                return HEFSEIK;
             case "hechsheir":
             case "hechsher":
             case "hekhsheir":
@@ -578,6 +581,12 @@ public class AutoCorrect {
                 return OC;
             case "Orakh":
                 return ORACH;
+            case "parasha":
+            case "parsha":
+            case "parshah":
+                return PARASHAH;
+            case "parve":
+                return PAREVE;
             case "psak":
             case "p'sak":
                 return PESAK;
@@ -605,6 +614,8 @@ public class AutoCorrect {
                 return RISHONIM;
             case "seif":
                 return SEIF;
+            case "shabbat":
+            case "shabbos":
             case "Shabbos":
                 return SHABBAT;
             case "shacharit":
@@ -632,6 +643,8 @@ public class AutoCorrect {
                 return SHALIACH_UPPERCASE;
             case "Shach":
                 return SHAKH;
+            case "sheni":
+                return SHEINI;
             case "shekia":
             case "shekiah":
             case "shekiya":
@@ -686,6 +699,8 @@ public class AutoCorrect {
             case "Sh'kiyat":
             case "Sh'ki'at":
                 return SHEKIAT;
+            case "shlishi":
+                return SHELISHI;
             case "shtar":
             case "sh'tar":
                 return SHETAR;
