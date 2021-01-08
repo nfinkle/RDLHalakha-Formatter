@@ -57,10 +57,60 @@ def format_page():
 @app.route('/italicized-words')
 def italicized_words():
     with open("AutoCorrect.java") as ac:
-        words = ac.read().split(" ")
-    return jsonify(words)
+        lines = ac.read().split(";\n")
+
+    words = []
+    for line in lines:
+        in_line = line.split(" ")
+        for i in range(len(in_line)):
+            word = in_line[i]
+            if word == "italicizedArr":
+                words = new_func(in_line, i)
+    return render_template("italicized_pages.html", italicized=words)
+
+
+def new_func(line, start):
+    words = []
+    for word in line[start+3:-1]:
+        if not word:
+            continue
+        if "\"" in word:
+            words.append(word.split("\"")[1])
+        else:
+            words.append(format_words(word.split(",")[0]))
+    return words
+
+
+def format_words(end):
+    # if end.isupper():
+    #     end = end.lower()
+    words = end.split("___")
+    return format_word(" ".join(words)).replace("_", "'")
+
+
+def format_word(end):
+    compounds = end.split("__")
+    if len(compounds) == 1:
+        return end.lower()
+    for i in range(len(compounds)):
+        compounds[i] = compounds[i].replace("_", "'").lower()
+
+    if compounds[1] == "lowercase":
+        return compounds[0].lower()
+    if compounds[1] == "uppercase":
+        return compounds[0].upper()
+    if compounds[1] == "titlecase":
+        word = compounds[0].title()
+        if "'" in word:
+            j = word.find("'")
+            word = word[:j+1] + word[j+1].lower() + word[j+2:]
+        return word
+    if compounds[1] == "ha'titlecase":
+        return "Ha" + compounds[0][2:].title()
+    return " ".join(compounds)
 
 
 if __name__ == "__main__":
     app.run(debug=True, development=True)
-    format_page()
+    # format_page()
+    italicized_words()
