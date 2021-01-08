@@ -54,22 +54,65 @@ def format_page():
     return render_template('RDLH.html')
 
 
+@app.route('/words')
+def autocorrected_words():
+    words, corrected = parse_auto_correct_file(True)
+    return render_template('autocorrected_words.html', corrected=corrected,  italicized=words)
+
+
 @app.route('/italicized-words')
 def italicized_words():
-    with open("AutoCorrect.java") as ac:
-        lines = ac.read().split(";\n")
-
-    words = []
-    for line in lines:
-        in_line = line.split(" ")
-        for i in range(len(in_line)):
-            word = in_line[i]
-            if word == "italicizedArr":
-                words = new_func(in_line, i)
+    words, _ = parse_auto_correct_file()
     return render_template("italicized_pages.html", italicized=words)
 
 
-def new_func(line, start):
+def parse_auto_correct_file(get_auto_correct_values=False):
+    with open("AutoCorrect.java") as ac:
+        lines = ac.read().split(";\n")
+    words = []
+    corrected = {}
+    for i in range(len(lines)):
+        words_in_line = lines[i].split()
+        for j in range(len(words_in_line)):
+            if words_in_line[j] == "italicizedArr":
+                words = handle_italicized(words_in_line, j)
+            if get_auto_correct_values and words_in_line[j] == "switch":
+                corrected = handle_switch(lines, i, j)
+    return words, corrected
+
+
+def handle_switch(lines, start, first_line_start):
+    correct = {}
+    first_line = str(lines[start]).splitlines()[4:]
+    key, val = parse_statement_in_switch("\n".join(first_line))
+    correct[format_term(key)] = val
+    for i in range(start + 1, len(lines)):
+        if "}" in lines[i]:
+            break
+        key, val = parse_statement_in_switch(lines[i])
+        if key and val:
+            correct[format_term(key)] = val
+    print(correct)
+    return correct
+
+
+def parse_statement_in_switch(lines):
+    values = []
+    for line in lines.splitlines():
+        if "return" in line:
+            return str(line[line.find("return") + 7:]), values
+        if "case" in line:
+            i = line.find("case") + 6
+            end = line.rfind("\"")
+            # print("appending " + line[i:end])
+            values.append(line[i:end])
+        elif "default" in line:  # should be default
+            print("returning None")
+            return None, None
+    raise ValueError("Must have a return statement")
+
+
+def handle_italicized(line, start):
     words = []
     for word in line[start+3:-1]:
         if not word:
@@ -77,21 +120,15 @@ def new_func(line, start):
         if "\"" in word:
             words.append(word.split("\"")[1])
         else:
-            words.append(format_words(word.split(",")[0]))
+            words.append(format_term(word.split(",")[0]))
     return words
 
 
-def format_words(end):
-    # if end.isupper():
-    #     end = end.lower()
-    words = end.split("___")
-    return format_word(" ".join(words)).replace("_", "'")
-
-
-def format_word(end):
-    compounds = end.split("__")
+def format_term(term):
+    words = term.replace("___", " ")
+    compounds = words.split("__")
     if len(compounds) == 1:
-        return end.lower()
+        return words.lower()
     for i in range(len(compounds)):
         compounds[i] = compounds[i].replace("_", "'").lower()
 

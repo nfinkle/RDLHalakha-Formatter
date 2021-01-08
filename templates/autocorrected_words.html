@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+<div style="margin-left:1em;">
+    <h1>Autocorrect Glossary</h1>
+    {% for result,pre_arr in corrected.items() %}
+    {% if result in italicized %} <em>{%endif %}
+        {{ result }}:
+        {% if result in italicized %} </em>{%endif %}
+    {% for from_word in pre_arr %}
+    {{ from_word }}{{ ", " if not loop.last }}
+    {% endfor %}
+    <br>
+    {% endfor %}
+</div>
