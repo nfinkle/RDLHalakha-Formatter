@@ -1,5 +1,5 @@
 <head>
-    <title>Autocorrect Glossary</title>
+    <title>Italicized Words</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
@@ -19,8 +19,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="/words">Autocorrect Glossary</a>
-                    <a class=" nav-link" href="/italicized-words">Italicized Words</a>
+                    <a class="nav-link" href="/words">Autocorrect Glossary</a>
+                    <a class=" nav-link active" aria-current="page" href="/italicized-words">Italicized Words</a>
                 </div>
             </div>
         </div>
@@ -28,15 +28,9 @@
     <br>
 
     <div style="margin-left:1em;">
-        <h1>Autocorrect Glossary</h1>
-        {% for result,pre_arr in corrected.items() %}
-        {% if result in italicized %} <em>{%endif %}
-            {{ result }}:
-            {% if result in italicized %} </em>{%endif %}
-        {% for from_word in pre_arr %}
-        {{ from_word }}{{ ", " if not loop.last }}
-        {% endfor %}
-        <br>
+        <h1>Words that Will Be Corrected to Be Italicized</h1>
+        {% for word in italicized %}
+        <em>{{ word }}</em><br>
         {% endfor %}
     </div>
 </body>

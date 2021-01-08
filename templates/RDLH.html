@@ -1,17 +1,45 @@
 <script src="{{ url_for('static', filename='js/RDLH.js') }}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
-<script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
-<div style="padding-left:10px;">
-    <h3>Enter Text</h3>
-    <form id="code_form" spellcheck="false">
-        <textarea id="form_textarea" style="font-size: 11px;" rows='16' cols='75'></textarea>
-    </form>
-    <button type="button" class="btn btn-primary" onclick="format()">Format</button>
 
-    <br><br><br>
-    <h3>Formatted Text</h3>
-</div>
-<div id="HTML_STUFF" style="padding-left:20px;"><em>Nothing yet.</em></div>
+<head>
+    <title>Autocorrect Glossary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico')}}">
+</head>
 
-<script src="{{ url_for('static', filename='js/RDLH.js') }}"></script>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">RDL Halakha Formatter</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="/words">Autocorrect Glossary</a>
+                    <a class=" nav-link" href="/italicized-words">Italicized Words</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <br>
+
+    <div style="margin-left:1em;">
+        <h1>Enter Text</h1>
+        <form id="code_form" spellcheck="false">
+            <textarea id="form_textarea" style="font-size: 11px;" rows='16' cols='75'></textarea>
+        </form>
+        <button type="button" class="btn btn-primary" onclick="format()">Format</button>
+
+        <br><br><br>
+        <h1>Formatted Text</h1>
+    </div>
+    <div id="HTML_STUFF" style="padding-left:20px;"><em>Nothing yet.</em></div>
+
+    <script src="{{ url_for('static', filename='js/RDLH.js') }}"></script>
+</body>

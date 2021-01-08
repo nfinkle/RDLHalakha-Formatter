@@ -6,7 +6,6 @@ import time
 import os
 import re
 from flask_restx import inputs
-from static.CASClient import CASClient
 
 app = Flask(__name__)
 app.secret_key = os.urandom(64)
@@ -63,7 +62,7 @@ def autocorrected_words():
 @app.route('/italicized-words')
 def italicized_words():
     words, _ = parse_auto_correct_file()
-    return render_template("italicized_pages.html", italicized=words)
+    return render_template("italicized_words.html", italicized=words)
 
 
 def parse_auto_correct_file(get_auto_correct_values=False):
@@ -91,8 +90,7 @@ def handle_switch(lines, start, first_line_start):
             break
         key, val = parse_statement_in_switch(lines[i])
         if key and val:
-            correct[format_term(key)] = val
-    print(correct)
+            correct[format_term(key)] = sorted(val, key=str.casefold)
     return correct
 
 
@@ -104,10 +102,8 @@ def parse_statement_in_switch(lines):
         if "case" in line:
             i = line.find("case") + 6
             end = line.rfind("\"")
-            # print("appending " + line[i:end])
             values.append(line[i:end])
         elif "default" in line:  # should be default
-            print("returning None")
             return None, None
     raise ValueError("Must have a return statement")
 
@@ -121,14 +117,14 @@ def handle_italicized(line, start):
             words.append(word.split("\"")[1])
         else:
             words.append(format_term(word.split(",")[0]))
-    return words
+    return sorted(words, key=str.casefold)
 
 
 def format_term(term):
     words = term.replace("___", " ")
     compounds = words.split("__")
     if len(compounds) == 1:
-        return words.lower()
+        return words.lower().replace("_", "'")
     for i in range(len(compounds)):
         compounds[i] = compounds[i].replace("_", "'").lower()
 
@@ -149,5 +145,4 @@ def format_term(term):
 
 if __name__ == "__main__":
     app.run(debug=True, development=True)
-    # format_page()
-    italicized_words()
+    format_page()
