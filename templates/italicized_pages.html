@@ -1,4 +1,7 @@
-<h1>Words that Will Be Corrected to Be Italicized</h1>
-{% for word in italicized %}
-{{ word }}<br>
-{% endfor %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+<div style="margin-left:1em;">
+    <h1>Words that Will Be Corrected to Be Italicized</h1>
+    {% for word in italicized %}
+    {{ word }}<br>
+    {% endfor %}
+</div>
