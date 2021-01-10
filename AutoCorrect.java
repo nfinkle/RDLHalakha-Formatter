@@ -89,6 +89,8 @@ public class AutoCorrect {
     private static final String MUTAR = "mutar";
     private static final String MISHNAH__TITLECASE = "Mishnah";
     private static final String MISHNAH___BERURAH__TITLECASE = "Mishnah Berurah";
+    private static final String NIDDAH_LOWERCASE = "niddah";
+    private static final String NIDDAH_TITLECASE = "Niddah";
     private static final String OC__UPPERCASE = "OC";
     private static final String OMER__LOWERCASE = "omer";
     private static final String OMER__TITLECASE = "Omer";
@@ -157,14 +159,15 @@ public class AutoCorrect {
                 "Kashrut", KELI, KEILIM, KENESET__LOWERCASE, KENESET__TITLECASE, KERIAH, KERIAT, "klaf", KOKHAVIM,
                 LEHACHMIR, LEHAKEIL, LEIN, LEKHATCHILA, LEMAASEH, MEGILLAH__TITLECASE, "mikdash", "Mikdash",
                 MILA__TITLECASE, MILKHIG, "minyan", "Minyan", MISHNAH__TITLECASE, MISHNAH___BERURAH__TITLECASE,
-                "mishnayot", "Mishnayot", "Mishpat", MUTAR, OC__UPPERCASE, OMER__LOWERCASE, OMER__TITLECASE,
-                ORACH__TITLECASE, PARASHAH, PAREVE, PESACHIM__TITLECASE, PESAK, PLAG__TITLECASE, POSKIM, PRI__TITLECASE,
-                "rishon", RISHONIM__TITLECASE, SEIF, SHAKH__TITLECASE, SHALIACH__LOWERCASE, SHALIACH__TITLECASE, "shas",
-                "Shas", SHEINI, SHEKIAH__TITLECASE, SHEKIAT__TITLECASE, SHELISHI, SHETAR, SHITAH, SHITOT, SHIVA, "shul",
-                SHULCHAN__TITLECASE, SHULCHAN___ARUKH__TITLECASE, SHLITA, SILUK, SIMCHAH, SKHAR, SNIF, SOLEDET,
-                "sugyot", "Sugyot", TAAM, TALLIT, TEFILAH, TEFILLIN, TESHUVA, TESHUVOT, TEVILAH, TEVILAT,
-                TOSAFOT__TITLECASE, TOVEL, TREIF, TUR__TITLECASE, TZEIT__TITLECASE, TZIBUR, YABIA__TITLECASE, "yad",
-                YD__UPPERCASE, YEISH, "yomo", YOREH__TITLECASE, "yotzei", ZARAH__LOWERCASE, ZARAH__TITLECASE };
+                "mishnayot", "Mishnayot", "Mishpat", MUTAR, NIDDAH_LOWERCASE, NIDDAH_TITLECASE, OC__UPPERCASE,
+                OMER__LOWERCASE, OMER__TITLECASE, ORACH__TITLECASE, PARASHAH, PAREVE, PESACHIM__TITLECASE, PESAK,
+                PLAG__TITLECASE, POSKIM, PRI__TITLECASE, "rishon", RISHONIM__TITLECASE, SEIF, SHAKH__TITLECASE,
+                SHALIACH__LOWERCASE, SHALIACH__TITLECASE, "shas", "Shas", SHEINI, SHEKIAH__TITLECASE,
+                SHEKIAT__TITLECASE, SHELISHI, SHETAR, SHITAH, SHITOT, SHIVA, "shul", SHULCHAN__TITLECASE,
+                SHULCHAN___ARUKH__TITLECASE, SHLITA, SILUK, SIMCHAH, SKHAR, SNIF, SOLEDET, "sugyot", "Sugyot", TAAM,
+                TALLIT, TEFILAH, TEFILLIN, TESHUVA, TESHUVOT, TEVILAH, TEVILAT, TOSAFOT__TITLECASE, TOVEL, TREIF,
+                TUR__TITLECASE, TZEIT__TITLECASE, TZIBUR, YABIA__TITLECASE, "yad", YD__UPPERCASE, YEISH, "yomo",
+                YOREH__TITLECASE, "yotzei", ZARAH__LOWERCASE, ZARAH__TITLECASE };
         HashSet<String> set = new HashSet<>();
         Collections.addAll(set, italicizedArr);
         return set;
@@ -584,6 +587,14 @@ public class AutoCorrect {
                 return MUSAF__TITLECASE;
             case "muttar":
                 return MUTAR;
+            case "nida":
+            case "nidah":
+            case "nidda":
+                return NIDDAH_LOWERCASE;
+            case "Nida":
+            case "Nidah":
+            case "Nidda":
+                return NIDDAH_TITLECASE;
             case "OH":
                 return OC__UPPERCASE;
             case "Orakh":

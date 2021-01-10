@@ -6,6 +6,8 @@ import time
 import os
 import re
 from flask_restx import inputs
+from collections import OrderedDict
+
 
 app = Flask(__name__)
 app.secret_key = os.urandom(64)
@@ -141,6 +143,20 @@ def format_term(term):
     if compounds[1] == "ha'titlecase":
         return "Ha" + compounds[0][2:].title()
     return " ".join(compounds)
+
+
+@app.route("/sefaria-asks")
+def sefaria_asks():
+    texts = {}
+    turim = {"Yoreh De'ah": "YD", "Orach Chayim": "OC",
+             "Even HaEzer": "EH", "Choshen Mishpat": "CM"}
+    for tur, abbre in turim.items():
+        if abbre != "OC":
+            texts[f"Pithei Teshuva on Shulchan Arukh, {tur}"] = [
+                f"Pitchei Teshuva {abbre}", f"Pitchei Teshuva on Shulchan Arukh, {tur}"]
+        texts[f"Arukh HaShulchan, {tur}"] = [f"Arukh HaShulchan {abbre}"]
+        texts[f"Beit Yosef, {tur}"] = [f"Beit Yosef {abbre}"]
+    return render_template("/sefaria_asks.html", texts=OrderedDict(sorted(texts.items())))
 
 
 if __name__ == "__main__":
