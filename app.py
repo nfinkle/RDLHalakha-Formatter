@@ -100,7 +100,8 @@ def parse_statement_in_switch(lines):
     values = []
     for line in lines.splitlines():
         if "return" in line:
-            return str(line[line.find("return") + 7:]), values
+            key = str(line[line.find("return") + 7:]).replace("\"", "")
+            return key, values
         if "case" in line:
             i = line.find("case") + 6
             end = line.rfind("\"")
