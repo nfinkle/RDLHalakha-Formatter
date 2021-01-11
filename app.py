@@ -86,7 +86,7 @@ def handle_switch(lines, start, first_line_start):
     correct = {}
     first_line = str(lines[start]).splitlines()[4:]
     key, val = parse_statement_in_switch("\n".join(first_line))
-    correct[format_term(key)] = val
+    correct[format_term(key)] = sorted(val, key=str.casefold)
     for i in range(start + 1, len(lines)):
         if "}" in lines[i]:
             break

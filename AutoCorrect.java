@@ -175,8 +175,16 @@ public class AutoCorrect {
 
     static String makeReplacement(String word) {
         switch (word) {
+            case "acharonim":
+            case "Acharonim":
             case "achronim":
+            case "aharonim":
+            case "Aharonim":
+            case "ahronim":
+            case "Ahronim":
+            case "akharonim":
             case "akhronim":
+            case "Akharonim":
             case "Akhronim":
                 return ACHRONIM__TITLECASE;
             case "alot":
@@ -517,16 +525,39 @@ public class AutoCorrect {
             case "layning":
                 return LEINING;
             case "lechatchila":
+            case "lechatchilah":
             case "lechatkhila":
+            case "lechatkhilah":
+            case "lehatchila":
+            case "lehatchilah":
+            case "lehatkhila":
+            case "lehatkhilah":
             case "lekhatkhila":
+            case "lekhatkhilah":
             case "lichatchila":
+            case "lichatchilah":
             case "lichatkhila":
+            case "lichatkhilah":
+            case "lihatchila":
+            case "lihatchilah":
+            case "lihatkhila":
+            case "lihatkhilah":
             case "likhatchila":
+            case "likhatchilah":
             case "likhatkhila":
+            case "likhatkhilah":
             case "l'chatchila":
+            case "l'chatchilah":
             case "l'chatkhila":
+            case "l'chatkhilah":
+            case "l'hatchila":
+            case "l'hatchilah":
+            case "l'hatkhila":
+            case "l'hatkhilah":
             case "l'khatchila":
+            case "l'khatchilah":
             case "l'khatkhila":
+            case "l'khatkhilah":
                 return LEKHATCHILA;
             case "li'maase":
             case "li'mayse":
