@@ -29,17 +29,17 @@
     </nav>
     <br>
 
-    <div class="container">
+    <div style="margin-left: 1.5em;">
         <h1>Autocorrect Glossary</h1>
         {% for result,pre_arr in corrected.items() %}
-        <p><span>
+        <p><span class="anchored">
                 {% if result in italicized %} <em>{%endif %}
                     {{ result }}:
                     {% if result in italicized %} </em>{%endif %}&nbsp;
             </span>
             {% for from_word in pre_arr %}
             {{ from_word }}{{ ", " if not loop.last }}
-            {% endfor %}</span>
+            {% endfor %}
         </p>
         {% endfor %}
     </div>
@@ -48,7 +48,7 @@
             visible: 'always',
             placement: 'left',
         };
-        anchors.add('span');
+        anchors.add('.anchored');
     </script>
 
 </body>
