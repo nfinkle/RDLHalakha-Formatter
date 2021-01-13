@@ -151,18 +151,30 @@ def sefaria_asks():
     texts = {}
     turim = {"Yoreh De'ah": "YD", "Orach Chayim": "OC",
              "Even HaEzer": "EH", "Choshen Mishpat": "CM"}
-    texts["Tur, Orach Chaim"] = ["Tur, Orach Chayim",
-                                 "Tur Orach Chayim", "Tur OC"]
-    texts["Tur, Yoreh Deah"] = ["Tur, Yoreh De'ah",
-                                "Tur Yoreh De'ah", "Tur YD"]
+
+    texts["Turei Zahav on Shulchan Arukh, Choshen Mishpat"] = [
+        "Taz on Shulchan Arukh, Choshen Mishpat"]
+    for name in ["Tur", "Beit Yosef", "Arukh HaShulchan", "Darkei Moshe", "Darchei Moshe"]:
+        texts[f"{name}, Orach Chaim"] = [f"{name}, Orach Chayim", f"{name} OC"]
+        texts[f"{name}, Yoreh Deah"] = [f"{name}, Yoreh De'ah", f"{name} YD"]
     for tur, abbre in turim.items():
         if abbre != "OC":
             texts[f"Pithei Teshuva on Shulchan Arukh, {tur}"] = [
                 f"Pitchei Teshuva {abbre}", f"Pitchei Teshuva on Shulchan Arukh, {tur}"]
             if abbre != "YD":  # if not OC nor YD
                 texts[f"Tur, {tur}"] = [f"Tur {tur}", f"Tur {abbre}"]
-        texts[f"Arukh HaShulchan, {tur}"] = [f"Arukh HaShulchan {abbre}"]
-        texts[f"Beit Yosef, {tur}"] = [f"Beit Yosef {abbre}"]
+                texts[f"Beit Yosef, {tur}"] = [
+                    f"Beit Yosef {tur}", f"Beit Yosef {abbre}"]
+                texts[f"Arukh HaShulchan, {tur}"] = [
+                    f"Arukh HaShulchan {abbre}"]
+                texts[f"Darchei Moshe, {tur}"] = [
+                    f"Darchei Moshe {abbre}"]
+                texts[f"Darkei Moshe, {tur}"] = [
+                    f"Darkei Moshe {abbre}"]
+                texts[f"Shakh on Shulchan Arukh, {tur}"] = [f"Shakh {abbre}"]
+        texts[f"Taz on Shulchan Arukh, {tur}"] = [f"Taz {abbre}"]
+        texts[f"Beur HaGra on Shulchan Arukh, {tur}"] = [
+            f"Beur HaGra {abbre}", f"Beiur HaGra {abbre}", f"Biur HaGra {abbre}"]
     return render_template("/sefaria_asks.html", texts=OrderedDict(sorted(texts.items())))
 
 

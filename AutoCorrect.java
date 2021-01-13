@@ -701,6 +701,10 @@ public class AutoCorrect {
                 return MISHNAH___BERURAH__TITLECASE;
             case "mitzva":
                 return "mitzvah";
+            case "moshe":
+            case "Mosheh":
+            case "mosheh":
+                return "Moshe";
             case "musaf":
             case "mussaf":
             case "Mussaf":
