@@ -62,7 +62,7 @@ public class AutoCorrect {
     private static final String HALAKHIC = "halakhic";
     private static final String HALAKHICALLY = "halakhically";
     private static final String HALAKHOT = "halakhot";
-    private static final String HALLEL_TITLECASE = "Hallel";
+    private static final String HALLEL__TITLECASE = "Hallel";
     private static final String HAMAZON__TITLECASE = "HaMazon";
     private static final String HANEITZ__HA_TITLECASE = "HaNeitz";
     private static final String HASHEM__HA_TITLECASE = "HaShem";
@@ -482,7 +482,7 @@ public class AutoCorrect {
             case "halachot":
                 return HALAKHOT;
             case "hallel":
-                return HALLEL_TITLECASE;
+                return HALLEL__TITLECASE;
             case "hamazon":
             case "haMazon":
             case "Hamazon":
