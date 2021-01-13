@@ -31,7 +31,7 @@
     <div style="margin-left:1em;">
         <h1>Autocorrect Glossary</h1>
         {% for result,pre_arr in corrected.items() %}
-        <p style="margin-left:2em; text-indent:-2em;" id="{{result}}">
+        <p style="margin-left:2em; text-indent:-2em;" id="{{result}}" class=".anchored">
             {% if result in italicized %} <em>{%endif %}
                 {{ result }}:
                 {% if result in italicized %} </em>{%endif %}
@@ -41,4 +41,13 @@
         </p>
         {% endfor %}
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"></script>
+    <script>
+        anchors.options = {
+            visible: 'always',
+            placement: 'right',
+        };
+        anchors.add('p');
+        anchors.add();
+    </script>
 </body>

@@ -11,7 +11,7 @@ public class AutoCorrect {
     private static final String AVEIL = "aveil";
     private static final String AVODAH__LOWERCASE = "avodah";
     private static final String AVODAH__TITLECASE = "Avodah";
-    private static final String BATEL = "batel";
+    private static final String BATEIL = "bateil";
     private static final String BEDIEVED = "bedieved";
     private static final String BEIT = "beit";
     private static final String BEIT___YOSEF__TITLECASE = "Beit Yosef";
@@ -178,7 +178,7 @@ public class AutoCorrect {
 
     protected static final HashSet<String> italicizedHashSet() {
         String[] italicizedArr = { ACHRONIM__TITLECASE, AKUM, ALIYAH, "aliyot", ALOT__TITLECASE, ARUKH__TITLECASE,
-                ASSUR, AVEIL, AVODAH__LOWERCASE, AVODAH__TITLECASE, BATEL, BEDIEVED, BEIN, BEIT,
+                ASSUR, AVEIL, AVODAH__LOWERCASE, AVODAH__TITLECASE, BATEIL, BEDIEVED, BEIN, BEIT,
                 BEIT___YOSEF__TITLECASE, BELIAH, BELIAT, BELIOT, BEN, "bentch", BERAKHAH__LOWERCASE,
                 BERAKHAH__TITLECASE, BERAKHOT__LOWERCASE, BERAKHOT__TITLECASE, BERABIM, BERURAH__TITLECASE,
                 BIRKAT__TITLECASE, BISHUL, BITUL, BO, CHADASH__TITLECASE, CHAYIM__TITLECASE, CHINUKH, CHOSHEN,
@@ -236,8 +236,10 @@ public class AutoCorrect {
                 return AVODAH__LOWERCASE;
             case "Avoda":
                 return AVODAH__TITLECASE;
+            case "batel":
             case "battel":
-                return BATEL;
+            case "batteil":
+                return BATEIL;
             case "be'dieved":
                 return BEDIEVED;
             case "bein":
