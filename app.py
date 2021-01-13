@@ -151,10 +151,16 @@ def sefaria_asks():
     texts = {}
     turim = {"Yoreh De'ah": "YD", "Orach Chayim": "OC",
              "Even HaEzer": "EH", "Choshen Mishpat": "CM"}
+    texts["Tur, Orach Chaim"] = ["Tur, Orach Chayim",
+                                 "Tur Orach Chayim", "Tur OC"]
+    texts["Tur, Yoreh Deah"] = ["Tur, Yoreh De'ah",
+                                "Tur Yoreh De'ah", "Tur YD"]
     for tur, abbre in turim.items():
         if abbre != "OC":
             texts[f"Pithei Teshuva on Shulchan Arukh, {tur}"] = [
                 f"Pitchei Teshuva {abbre}", f"Pitchei Teshuva on Shulchan Arukh, {tur}"]
+            if abbre != "YD":  # if not OC nor YD
+                texts[f"Tur, {tur}"] = [f"Tur {tur}", f"Tur {abbre}"]
         texts[f"Arukh HaShulchan, {tur}"] = [f"Arukh HaShulchan {abbre}"]
         texts[f"Beit Yosef, {tur}"] = [f"Beit Yosef {abbre}"]
     return render_template("/sefaria_asks.html", texts=OrderedDict(sorted(texts.items())))

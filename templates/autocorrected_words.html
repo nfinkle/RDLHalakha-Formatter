@@ -31,7 +31,7 @@
     <div style="margin-left:1em;">
         <h1>Autocorrect Glossary</h1>
         {% for result,pre_arr in corrected.items() %}
-        <p style="margin-left:2em; text-indent:-2em;">
+        <p style="margin-left:2em; text-indent:-2em;" id="{{result}}">
             {% if result in italicized %} <em>{%endif %}
                 {{ result }}:
                 {% if result in italicized %} </em>{%endif %}
