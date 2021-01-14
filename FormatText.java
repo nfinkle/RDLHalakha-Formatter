@@ -48,14 +48,21 @@ public class FormatText {
             sb.setLength(0);
             if ((char) c == '?' || (char) c == '!') {
                 prev = in.read();
-                c = Character.toUpperCase(in.read());
+                c = in.read();
                 if (Character.isAlphabetic(prev)) {
                     sb.append((char) prev);
                 } else {
-                    System.out.printf("%c", prev);
+                    if ((char) prev == '\r' || (char) prev == '\n') {
+                        System.out.print("</p><p>");
+                    } else {
+                        System.out.printf("%c", prev);
+                    }
+                    c = Character.toUpperCase(c);
                 }
                 if (Character.isAlphabetic(c)) {
                     sb.append((char) c);
+                } else if ((char) c == '\r' || (char) c == '\n') {
+                    System.out.print("</p><p>");
                 } else {
                     System.out.printf("%c", c);
                 }
