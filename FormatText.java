@@ -46,6 +46,21 @@ public class FormatText {
             }
             System.out.printf("%s%s", prevWord, parseChar(c, false));
             sb.setLength(0);
+            if ((char) c == '?' || (char) c == '!') {
+                prev = in.read();
+                c = Character.toUpperCase(in.read());
+                if (Character.isAlphabetic(prev)) {
+                    sb.append((char) prev);
+                } else {
+                    System.out.printf("%c", prev);
+                }
+                if (Character.isAlphabetic(c)) {
+                    sb.append((char) c);
+                } else {
+                    System.out.printf("%c", c);
+                }
+
+            }
         }
         String prevWord = AutoCorrect.makeReplacement(sb.toString());
         if (italicized.contains(prevWord)) {

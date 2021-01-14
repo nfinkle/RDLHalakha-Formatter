@@ -9,7 +9,8 @@ public class AutoCorrect {
     private static final String ARUKH__TITLECASE = "Arukh";
     private static final String ASSUR = "assur";
     private static final String AVEIL = "aveil";
-    private static final String AVODAH__LOWERCASE = "avodah";
+    private static final String AVEILUT = "aveilut";
+    private static final String AVODAH = "avodah";
     private static final String AVODAH__TITLECASE = "Avodah";
     private static final String BATEIL = "bateil";
     private static final String BEDIEVED = "bedieved";
@@ -20,9 +21,9 @@ public class AutoCorrect {
     private static final String BELIAT = "beliat";
     private static final String BELIOT = "beliot";
     private static final String BEN = "ben";
-    private static final String BERAKHAH__LOWERCASE = "berakhah";
+    private static final String BERAKHAH = "berakhah";
     private static final String BERAKHAH__TITLECASE = "Berakhah";
-    private static final String BERAKHOT__LOWERCASE = "berakhot";
+    private static final String BERAKHOT = "berakhot";
     private static final String BERAKHOT__TITLECASE = "Berakhot";
     private static final String BERABIM = "berabim";
     private static final String BERURAH__TITLECASE = "Berurah";
@@ -43,7 +44,7 @@ public class AutoCorrect {
     private static final String DE_AH__TITLECASE = "De'ah";
     private static final String DE_ORAYTA = "de'orayta";
     private static final String DERABANAN = "derabanan";
-    private static final String DEVARIM__LOWERCASE = "devarim";
+    private static final String DEVARIM = "devarim";
     private static final String DEVARIM__TITLECASE = "Devarim";
     private static final String EIDIM = "eidim";
     private static final String EINO = "eino";
@@ -54,7 +55,7 @@ public class AutoCorrect {
     private static final String GRAMA = "grama";
     private static final String HACHAMAH__HA_TITLECASE = "HaChamah";
     private static final String HADA_AT = "hada'at";
-    private static final String HADECHAK__LOWERCASE = "hadechak";
+    private static final String HADECHAK = "hadechak";
     private static final String HADECHAK__TITLECASE = "Hadechak";
     private static final String HAEZER__HA_TITLECASE = "HaEzer";
     private static final String HAKOKHAVIM__HA_TITLECASE = "HaKokhavim";
@@ -65,6 +66,8 @@ public class AutoCorrect {
     private static final String HALLEL__TITLECASE = "Hallel";
     private static final String HAMAZON__TITLECASE = "HaMazon";
     private static final String HANEITZ__HA_TITLECASE = "HaNeitz";
+    private static final String HAPOSKIM = "haposkim";
+    private static final String HAPOSKIM__TITLECASE = "HaPoskim";
     private static final String HASHEM__HA_TITLECASE = "HaShem";
     private static final String HASHEMASHOT__HA_TITLECASE = "HaShemashot";
     private static final String HASHACHAR__HA_TITLECASE = "HaShachar";
@@ -75,14 +78,15 @@ public class AutoCorrect {
     private static final String HEKHSHER = "hekhsher";
     private static final String HETER = "heter";
     private static final String HILKHOT = "hilkhot";
+    private static final String IRUY = "iruy";
     private static final String KAHAL = "kahal";
     private static final String KELI = "keli";
     private static final String KEILIM = "keilim";
-    private static final String KENESET__LOWERCASE = "keneset";
+    private static final String KENESET = "keneset";
     private static final String KENESET__TITLECASE = "Keneset";
     private static final String KERIAH = "keriah";
     private static final String KERIAT = "keriat";
-    private static final String KIDDUSHIN__LOWERCASE = "kiddushin";
+    private static final String KIDDUSHIN = "kiddushin";
     private static final String KIDDUSHIN__TITLECASE = "Kiddushin";
     private static final String KOKHAVIM = "kokhavim";
     private static final String LEHAKEIL = "lehakeil";
@@ -95,6 +99,7 @@ public class AutoCorrect {
     private static final String IGGROT___MOSHE__TITLECASE = "Iggrot Moshe";
     private static final String ISSUR = "issur";
     private static final String MA_ASEH = "ma'aseh";
+    private static final String MACHLOKET = "machloket";
     private static final String MAZON = "mazon";
     private static final String MEGILLAH__TITLECASE = "Megillah";
     private static final String MELAKHAH = "melakhah";
@@ -104,18 +109,19 @@ public class AutoCorrect {
     private static final String MUTAR = "mutar";
     private static final String MISHNAH__TITLECASE = "Mishnah";
     private static final String MISHNAH___BERURAH__TITLECASE = "Mishnah Berurah";
-    private static final String NIDDAH__LOWERCASE = "niddah";
+    private static final String NIDDAH = "niddah";
     private static final String NIDDAH__TITLECASE = "Niddah";
     private static final String NISUIN = "nisuin";
     private static final String OC__UPPERCASE = "OC";
-    private static final String OMER__LOWERCASE = "omer";
+    private static final String OMER = "omer";
     private static final String OMER__TITLECASE = "Omer";
     private static final String ORACH__TITLECASE = "Orach";
+    private static final String PAGUM = "pagum";
     private static final String PAREVE = "pareve";
     private static final String PARASHAH = "parashah";
-    private static final String PASUK__LOWERCASE = "pasuk";
+    private static final String PASUK = "pasuk";
     private static final String PASUK__TITLECASE = "Pasuk";
-    private static final String PEREK__LOWERCASE = "perek";
+    private static final String PEREK = "perek";
     private static final String PEREK__TITLECASE = "Perek";
     private static final String PESACHIM__TITLECASE = "Pesachim";
     private static final String PESAK = "pesak";
@@ -124,26 +130,26 @@ public class AutoCorrect {
     private static final String PRI__TITLECASE = "Pri";
     private static final String RISHONIM__TITLECASE = "Rishonim";
     private static final String SEIF = "se'if";
-    private static final String SHA_AH__LOWERCASE = "sha'ah";
+    private static final String SEFER = "sefer";
+    private static final String SEFER__TITLECASE = "Sefer";
+    private static final String SEFARIM = "sefarim";
+    private static final String SHA_AH = "sha'ah";
     private static final String SHA_AH__TITLECASE = "Sha'ah";
-    private static final String SHA_AT__LOWERCASE = "sha'at";
+    private static final String SHA_AT = "sha'at";
     private static final String SHA_AT__TITLECASE = "Sha'at";
     private static final String SHABBAT__TITLECASE = "Shabbat";
     private static final String SHACHARIT__TITLECASE = "Shacharit";
     private static final String SHAKH__TITLECASE = "Shakh";
-    private static final String SHALIACH__LOWERCASE = "shaliach";
+    private static final String SHALIACH = "shaliach";
     private static final String SHALIACH__TITLECASE = "Shaliach";
-    private static final String SHEBIKDUSHAH__TITLECASE = "Shebikdushah";
+    private static final String SHEBIKDUSHAH = "shebikdushah";
     private static final String SHEINI = "sheini";
     private static final String SHEKIAH__TITLECASE = "Shekiah";
     private static final String SHEKIAT__TITLECASE = "Shekiat";
     private static final String SHELISHI = "shelishi";
     private static final String SHETAR = "shetar";
-    private static final String SHEVA__LOWERCASE = "sheva";
-    private static final String SHEVA__TITLECASE = "Sheva";
     private static final String SHITAH = "shitah";
     private static final String SHITOT = "shitot";
-    private static final String SHIVA = "shiva";
     private static final String SHLITA = "shlita";
     private static final String SHULCHAN__TITLECASE = "Shulchan";
     private static final String SHULCHAN___ARUKH__TITLECASE = "Shulchan Arukh";
@@ -154,11 +160,13 @@ public class AutoCorrect {
     private static final String SOLEDET = "soledet";
     private static final String TAAM = "ta'am";
     private static final String TAKANAH = "takanah";
-    private static final String TAKANAT__LOWERCASE = "takanat";
+    private static final String TAKANAT = "takanat";
     private static final String TAKANAT__TITLECASE = "Takanat";
     private static final String TALLIT = "tallit";
     private static final String TEFILAH = "tefilah";
     private static final String TEFILLIN = "tefillin";
+    private static final String TEREIFAH = "tereifah";
+    private static final String TEREIFOT = "tereifot";
     private static final String TESHUVA = "teshuva";
     private static final String TEVILAH = "tevilah";
     private static final String TEVILAT = "tevilat";
@@ -173,36 +181,35 @@ public class AutoCorrect {
     private static final String YD__UPPERCASE = "YD";
     private static final String YEISH = "yeish";
     private static final String YOREH__TITLECASE = "Yoreh";
-    private static final String ZARAH__LOWERCASE = "zarah";
+    private static final String ZARAH = "zarah";
     private static final String ZARAH__TITLECASE = "Zarah";
 
     protected static final HashSet<String> italicizedHashSet() {
         String[] italicizedArr = { ACHRONIM__TITLECASE, AKUM, ALIYAH, "aliyot", ALOT__TITLECASE, ARUKH__TITLECASE,
-                ASSUR, AVEIL, AVODAH__LOWERCASE, AVODAH__TITLECASE, BATEIL, BEDIEVED, BEIN, BEIT,
-                BEIT___YOSEF__TITLECASE, BELIAH, BELIAT, BELIOT, BEN, "bentch", BERAKHAH__LOWERCASE,
-                BERAKHAH__TITLECASE, BERAKHOT__LOWERCASE, BERAKHOT__TITLECASE, BERABIM, BERURAH__TITLECASE,
-                BIRKAT__TITLECASE, BISHUL, BITUL, BO, CHADASH__TITLECASE, CHAYIM__TITLECASE, CHINUKH, CHOSHEN,
-                CM__UPPERCASE, CHUMASH, CHUPAH, DA_AT, "davar", "Davar", DE_AH__TITLECASE, DE_ORAYTA, DERABANAN,
-                DEVARIM__LOWERCASE, DEVARIM__TITLECASE, EIDIM, EINO, EH__UPPERCASE, "Even", FLEISHIG, "frum",
-                GE_ONIM__TITLECASE, GOYIM, GRAMA, HACHAMAH__HA_TITLECASE, HADA_AT, HADECHAK__LOWERCASE,
+                ASSUR, AVEIL, AVEILUT, AVODAH, AVODAH__TITLECASE, BATEIL, BEDIEVED, BEIN, BEIT, BEIT___YOSEF__TITLECASE,
+                BELIAH, BELIAT, BELIOT, BEN, "bentch", BERAKHAH, BERAKHAH__TITLECASE, BERAKHOT, BERAKHOT__TITLECASE,
+                BERABIM, BERURAH__TITLECASE, BIRKAT__TITLECASE, BISHUL, BITUL, BO, CHADASH__TITLECASE,
+                CHAYIM__TITLECASE, CHINUKH, CHOSHEN, CM__UPPERCASE, CHUMASH, CHUPAH, DA_AT, "davar", "Davar",
+                DE_AH__TITLECASE, DE_ORAYTA, DERABANAN, DEVARIM, DEVARIM__TITLECASE, EIDIM, EINO, EH__UPPERCASE, "Even",
+                FLEISHIG, "frum", GE_ONIM__TITLECASE, GOYIM, GRAMA, HACHAMAH__HA_TITLECASE, HADA_AT, HADECHAK,
                 HADECHAK__TITLECASE, HAEZER__HA_TITLECASE, HAKOKHAVIM__HA_TITLECASE, HALAKHA__TITLECASE, HALAKHOT,
-                HAMAZON__TITLECASE, HANEITZ__HA_TITLECASE, HASHACHAR__HA_TITLECASE, HASHEMASHOT__HA_TITLECASE,
-                HASHULCHAN__HA_TITLECASE, HATORAH__HA_TITLECASE, HATZIBUR__HA_TITLECASE, HEFSEIK, HEKHSHER, HETER,
-                HILKHOT, IGGROT___MOSHE__TITLECASE, ISSUR, KAHAL, "kashrut", "Kashrut", KELI, KEILIM,
-                KENESET__LOWERCASE, KENESET__TITLECASE, KERIAH, KERIAT, KIDDUSHIN__LOWERCASE, KIDDUSHIN__TITLECASE,
-                "klaf", KOKHAVIM, LEHACHMIR, LEHAKEIL, LEIN, LEKHATCHILAH, LEMAASEH, MA_ASEH, MAZON,
+                HAMAZON__TITLECASE, HANEITZ__HA_TITLECASE, HAPOSKIM, HAPOSKIM__TITLECASE, HASHACHAR__HA_TITLECASE,
+                HASHEMASHOT__HA_TITLECASE, HASHULCHAN__HA_TITLECASE, HATORAH__HA_TITLECASE, HATZIBUR__HA_TITLECASE,
+                HEFSEIK, HEKHSHER, HETER, HILKHOT, IRUY, IGGROT___MOSHE__TITLECASE, ISSUR, KAHAL, "kashrut", "Kashrut",
+                KELI, KEILIM, KENESET, KENESET__TITLECASE, KERIAH, KERIAT, KIDDUSHIN, KIDDUSHIN__TITLECASE, "klaf",
+                KOKHAVIM, LEHACHMIR, LEHAKEIL, LEIN, LEKHATCHILAH, LEMAASEH, MA_ASEH, MACHLOKET, MAZON,
                 MEGILLAH__TITLECASE, MELAKHAH, "mikdash", "Mikdash", MILA__TITLECASE, MILKHIG, "minyan", "Minyan",
-                MISHNAH__TITLECASE, MISHNAH___BERURAH__TITLECASE, "mishnayot", "Mishnayot", "Mishpat", MUTAR,
-                NIDDAH__LOWERCASE, NIDDAH__TITLECASE, OC__UPPERCASE, OMER__LOWERCASE, OMER__TITLECASE, ORACH__TITLECASE,
-                PARASHAH, PAREVE, PESACHIM__TITLECASE, PASUK__LOWERCASE, PASUK__TITLECASE, PEREK__LOWERCASE,
-                PEREK__TITLECASE, PESAK, PLAG__TITLECASE, POSKIM, PRI__TITLECASE, "rishon", RISHONIM__TITLECASE, SEIF,
-                SHAKH__TITLECASE, SHALIACH__LOWERCASE, SHALIACH__TITLECASE, "shas", "Shas", SHA_AH__LOWERCASE,
-                SHA_AH__TITLECASE, SHA_AT__LOWERCASE, SHA_AT__TITLECASE, SHEINI, SHEKIAH__TITLECASE, SHEKIAT__TITLECASE,
-                SHELISHI, SHETAR, SHITAH, SHITOT, SHIVA, "shul", SHULCHAN__TITLECASE, SHULCHAN___ARUKH__TITLECASE,
-                SHLITA, SILUK, SIMCHAH, SKHAR, SNIF, SOLEDET, "sugyot", "Sugyot", TAAM, TALLIT, TEFILAH, TEFILLIN,
-                TESHUVA, TESHUVOT, TEVILAH, TEVILAT, TOSAFOT__TITLECASE, TOVEL, TREIF, TUR__TITLECASE, TZEIT__TITLECASE,
-                TZIBUR, YABIA__TITLECASE, "yad", YD__UPPERCASE, YEISH, "yomo", YOREH__TITLECASE, "yotzei",
-                ZARAH__LOWERCASE, ZARAH__TITLECASE };
+                MISHNAH__TITLECASE, MISHNAH___BERURAH__TITLECASE, "mishnayot", "Mishnayot", "Mishpat", MUTAR, NIDDAH,
+                NIDDAH__TITLECASE, NISUIN, OC__UPPERCASE, OMER, OMER__TITLECASE, ORACH__TITLECASE, PAGUM, PARASHAH,
+                PAREVE, PESACHIM__TITLECASE, PASUK, PASUK__TITLECASE, PEREK, PEREK__TITLECASE, PESAK, PLAG__TITLECASE,
+                POSKIM, PRI__TITLECASE, "rishon", RISHONIM__TITLECASE, SEFER, SEFER__TITLECASE, SEFARIM, SEIF,
+                SHAKH__TITLECASE, SHALIACH, SHALIACH__TITLECASE, "shas", "Shas", SHA_AH, SHA_AH__TITLECASE, SHA_AT,
+                SHA_AT__TITLECASE, SHEBIKDUSHAH, SHEINI, SHEKIAH__TITLECASE, SHEKIAT__TITLECASE, SHELISHI, SHETAR,
+                "sheva", "Sheva", SHITAH, SHITOT, "shiva", "shul", SHULCHAN__TITLECASE, SHULCHAN___ARUKH__TITLECASE,
+                SHLITA, SILUK, SIMCHAH, SKHAR, SNIF, SOLEDET, "sugyot", "Sugyot", TAAM, TAKANAH, TAKANAT,
+                TAKANAT__TITLECASE, TALLIT, TEFILAH, TEFILLIN, TEREIFAH, TEREIFOT, TESHUVA, TESHUVOT, TEVILAH, TEVILAT,
+                TOSAFOT__TITLECASE, TOVEL, TREIF, TUR__TITLECASE, TZEIT__TITLECASE, TZIBUR, YABIA__TITLECASE, "yad",
+                YD__UPPERCASE, YEISH, "yichud", "yomo", YOREH__TITLECASE, "yotzei", ZARAH, ZARAH__TITLECASE };
         HashSet<String> set = new HashSet<>();
         Collections.addAll(set, italicizedArr);
         return set;
@@ -232,8 +239,12 @@ public class AutoCorrect {
                 return ASSUR;
             case "avel":
                 return AVEIL;
+            case "aveilus":
+            case "avelus":
+            case "avelut":
+                return AVEILUT;
             case "avoda":
-                return AVODAH__LOWERCASE;
+                return AVODAH;
             case "Avoda":
                 return AVODAH__TITLECASE;
             case "batel":
@@ -288,13 +299,13 @@ public class AutoCorrect {
             case "b'rachah":
             case "b'rakha":
             case "b'rakhah":
-                return BERAKHAH__LOWERCASE;
+                return BERAKHAH;
             case "berachot":
             case "brachot":
             case "brakhot":
             case "b'rachot":
             case "b'rakhot":
-                return BERAKHOT__LOWERCASE;
+                return BERAKHOT;
             case "Berachot":
             case "Brachot":
             case "Brakhot":
@@ -413,7 +424,7 @@ public class AutoCorrect {
             case "d'rabanan":
                 return DERABANAN;
             case "dvarim":
-                return DEVARIM__LOWERCASE;
+                return DEVARIM;
             case "Dvarim":
                 return DEVARIM__TITLECASE;
             case "edim":
@@ -445,7 +456,7 @@ public class AutoCorrect {
             case "hadchak":
             case "hadekhak":
             case "hadkhak":
-                return HADECHAK__LOWERCASE;
+                return HADECHAK;
             case "haEzer":
             case "Haezer":
             case "Ha'ezer":
@@ -497,6 +508,13 @@ public class AutoCorrect {
             case "netz":
             case "neitz":
                 return HANEITZ__HA_TITLECASE;
+            case "ha'poskim":
+                return HAPOSKIM;
+            case "haPoskim":
+            case "Haposkim":
+            case "Ha'Poskim":
+            case "ha'Poskim":
+                return HAPOSKIM__TITLECASE;
             case "hashachar":
             case "haShachar":
             case "hashakhar":
@@ -548,6 +566,8 @@ public class AutoCorrect {
             case "IM":
             case "Igrot Moshe":
                 return IGGROT___MOSHE__TITLECASE;
+            case "irui":
+                return IRUY;
             case "isur":
                 return ISSUR;
             case "kehal":
@@ -559,7 +579,7 @@ public class AutoCorrect {
             case "Kenesset":
                 return KENESET__TITLECASE;
             case "kenesset":
-                return KENESET__LOWERCASE;
+                return KENESET;
             case "keriyah":
             case "keri'ah":
             case "kriyah":
@@ -576,7 +596,7 @@ public class AutoCorrect {
             case "k'riyat":
                 return KERIAT;
             case "kidushin":
-                return KIDDUSHIN__LOWERCASE;
+                return KIDDUSHIN;
             case "Kidushin":
                 return KIDDUSHIN__TITLECASE;
             case "cochavim":
@@ -667,6 +687,14 @@ public class AutoCorrect {
             case "mayse":
             case "mayseh":
                 return MA_ASEH;
+            case "machaloket":
+            case "machaloqet":
+            case "machloqet":
+            case "makhaloket":
+            case "makhaloqet":
+            case "makhloket":
+            case "makhloqet":
+                return MACHLOKET;
             case "mazzon":
                 return MAZON;
             case "megila":
@@ -714,15 +742,21 @@ public class AutoCorrect {
             case "nida":
             case "nidah":
             case "nidda":
-                return NIDDAH__LOWERCASE;
+                return NIDDAH;
             case "Nida":
             case "Nidah":
             case "Nidda":
                 return NIDDAH__TITLECASE;
+            case "nissuin":
+            case "nissu'in":
+            case "nisu'in":
+                return NISUIN;
             case "OH":
                 return OC__UPPERCASE;
             case "Orakh":
                 return ORACH__TITLECASE;
+            case "p'gum":
+                return PAGUM;
             case "parasha":
             case "parsha":
             case "parshah":
@@ -730,11 +764,11 @@ public class AutoCorrect {
             case "parve":
                 return PAREVE;
             case "pasuq":
-                return PASUK__LOWERCASE;
+                return PASUK;
             case "Pasuq":
                 return PASUK__TITLECASE;
             case "pereq":
-                return PEREK__LOWERCASE;
+                return PEREK;
             case "Pereq":
                 return PEREK__TITLECASE;
             case "psak":
@@ -762,18 +796,24 @@ public class AutoCorrect {
                 return PLAG__TITLECASE;
             case "rishonim":
                 return RISHONIM__TITLECASE;
+            case "sefeir":
+                return SEFER;
+            case "Sefeir":
+                return SEFER__TITLECASE;
+            case "seforim":
+                return SEFARIM;
             case "seif":
                 return SEIF;
             case "shaa":
             case "shaah":
             case "sha'a":
-                return SHA_AH__LOWERCASE;
+                return SHA_AH;
             case "Shaa":
             case "Shaah":
             case "Sha'a":
                 return SHA_AH__TITLECASE;
             case "shaat":
-                return SHA_AT__LOWERCASE;
+                return SHA_AT;
             case "Shaat":
                 return SHA_AT__TITLECASE;
             case "shabbat":
@@ -794,7 +834,7 @@ public class AutoCorrect {
             case "shliakh":
             case "sh'liach":
             case "sh'liakh":
-                return SHALIACH__LOWERCASE;
+                return SHALIACH;
             case "Shaliakh":
             case "Sheliach":
             case "Sheliakh":
@@ -805,6 +845,10 @@ public class AutoCorrect {
                 return SHALIACH__TITLECASE;
             case "Shach":
                 return SHAKH__TITLECASE;
+            case "sh'bikdusha":
+            case "sh'bikdushah":
+            case "shebikdusha":
+                return SHEBIKDUSHAH;
             case "sheni":
                 return SHEINI;
             case "shekia":
@@ -880,6 +924,18 @@ public class AutoCorrect {
                 return SOLEDET;
             case "taam":
                 return TAAM;
+            case "takana":
+            case "takanna":
+            case "takannah":
+                return TAKANAH;
+            case "takanas":
+            case "takannas":
+            case "takannat":
+                return TAKANAT;
+            case "Takanas":
+            case "Takannas":
+            case "Takannat":
+                return TAKANAT;
             case "talis":
             case "talit":
             case "tallis":
@@ -900,6 +956,18 @@ public class AutoCorrect {
             case "t'filin":
             case "t'fillin":
                 return TEFILLIN;
+            case "trefos":
+            case "trefot":
+            case "treifot":
+            case "treifos":
+            case "t'refos":
+            case "t'refot":
+            case "t'reifot":
+            case "t'reifos":
+            case "terefos":
+            case "terefot":
+            case "tereifos":
+                return TEREIFOT;
             case "tshuva":
             case "tshuvah":
             case "t'shuva":
@@ -952,7 +1020,7 @@ public class AutoCorrect {
             case "Zara":
                 return ZARAH__TITLECASE;
             case "zara":
-                return ZARAH__LOWERCASE;
+                return ZARAH;
             default:
                 return word;
         }
