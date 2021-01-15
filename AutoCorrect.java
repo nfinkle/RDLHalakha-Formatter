@@ -771,6 +771,7 @@ public class AutoCorrect {
                 return NISUIN;
             case "OH":
                 return OC__UPPERCASE;
+            case "Orah":
             case "Orakh":
                 return ORACH__TITLECASE;
             case "p'gum":
