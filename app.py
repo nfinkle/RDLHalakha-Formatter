@@ -1,10 +1,8 @@
-from flask import Flask, request, render_template, url_for, jsonify, abort
+from flask import Flask, request, render_template, jsonify
 import worker
 import rq
-import tempfile
 import time
 import os
-import re
 from flask_restx import inputs
 from collections import OrderedDict
 
@@ -55,6 +53,8 @@ def format_page():
     return render_template('RDLH.html')
 
 
+@app.route('/autocorrected-words')
+@app.route('/glossary')
 @app.route('/words')
 def autocorrected_words():
     words, corrected = parse_auto_correct_file(True)
@@ -103,7 +103,9 @@ def parse_statement_in_switch(lines):
             key = str(line[line.find("return") + 7:])
             if key.find("\"") >= 0:
                 key = key.replace("\"", "")
-                key = key + "__TITLECASE" if key.istitle() else key
+                print(key)
+                key = key + \
+                    "__TITLECASE" if key.replace("'", "").istitle() else key
             return key, values
         if "case" in line:
             i = line.find("case") + 6
