@@ -148,6 +148,8 @@ def format_term(term):
         return word
     if compounds[1] == "ha'titlecase":
         return "Ha" + compounds[0][2:].title()
+    if compounds[1] == "she'titlecase":
+        return "She" + compounds[0][3:].title()
     return " ".join(compounds)
 
 
