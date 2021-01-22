@@ -58,7 +58,9 @@ def format_page():
 @app.route('/words')
 def autocorrected_words():
     words, corrected = parse_auto_correct_file(True)
-    return render_template('autocorrected_words.html', corrected=corrected,  italicized=words)
+    suggestions = sum([len(values) for _, values in corrected.items()])
+
+    return render_template('autocorrected_words.html', corrected=corrected,  italicized=words, num_words=len(corrected.keys()), num_suggestions=suggestions)
 
 
 @app.route('/italicized-words')
@@ -103,7 +105,6 @@ def parse_statement_in_switch(lines):
             key = str(line[line.find("return") + 7:])
             if key.find("\"") >= 0:
                 key = key.replace("\"", "")
-                print(key)
                 key = key + \
                     "__TITLECASE" if key.replace("'", "").istitle() else key
             return key, values
