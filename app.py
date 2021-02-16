@@ -147,6 +147,14 @@ def format_term(term):
             j = word.find("'")
             word = word[:j+1] + word[j+1].lower() + word[j+2:]
         return word
+    if compounds[1] == "b'titlecase":
+        return "B'" + compounds[0][1:].title()
+    if compounds[1] == "be'titlecase":
+        return "Be" + compounds[0][2:].title()
+    if compounds[1] == "bi'titlecase":
+        return "Bi" + compounds[0][2:].title()
+    if compounds[1] == "de'titlecase":
+        return "De" + compounds[0][2:].title()
     if compounds[1] == "ha'titlecase":
         return "Ha" + compounds[0][2:].title()
     if compounds[1] == "she'titlecase":
