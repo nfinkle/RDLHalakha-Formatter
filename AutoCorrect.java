@@ -1792,9 +1792,7 @@ public class AutoCorrect {
             case "Rabba":
             case "rabbah":
                 return RABBAH__TITLECASE;
-            case "Rav":
             case "Rabi":
-            case "Rebbe":
                 return RABBI__TITLECASE;
             case "rabbim":
                 return RABIM;
