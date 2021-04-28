@@ -93,7 +93,8 @@ public class FormatText {
     }
 
     private static int handleDashNewlineAndHebrew(BufferedReader in, int c) throws IOException {
-        System.out.printf("%n%s%c", "<p dir=\"rtl\"> dir=\"rtl\"", c);
+        System.out.printf("%n%s%c", "<p dir=\"rtl\"> ", c);
+        // System.out.printf("%n%s%c", "<p dir=\"rtl\"> dir=\"rtl\"", c);
         for (c = in.read(); Character.UnicodeBlock.of(c) == Character.UnicodeBlock.HEBREW || isPunctuation(c)
                 || Character.isWhitespace(c); c = in.read()) {
             if ((char) c == '\n' || (char) c == '\r') {
