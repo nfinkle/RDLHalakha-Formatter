@@ -30,7 +30,9 @@ public class FormatText {
         StringBuilder out = new StringBuilder();
         buildFixedText(new BufferedReader(new InputStreamReader(System.in)), out);
         String output = out.toString().replace(String.format("%s %s", ITALICS_END, ITALICS_START), " ");
-        System.out.print(output.replace(" " + ITALICS_END, ITALICS_END + " "));
+        output = output.replace(" " + ITALICS_END, ITALICS_END + " ");
+        output = output.replace("<p></p><p>", "<p>");
+        System.out.print(output);
     }
 
     private static void buildFixedText(BufferedReader in, StringBuilder out) throws IOException {
@@ -53,11 +55,11 @@ public class FormatText {
                 prev = in.read();
                 c = in.read();
                 if (prev == -1) {
-                    return;
+                    continue;
                 }
                 if (c == -1) {
                     out.append(prev);
-                    return;
+                    continue;
                 }
                 if (Character.isAlphabetic(prev)) {
                     sb.append((char) prev);
