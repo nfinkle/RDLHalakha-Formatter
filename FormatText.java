@@ -5,8 +5,26 @@ import java.util.HashSet;
 
 public class FormatText {
 
-    private static final String ITALICS_START = "<i>";
-    private static final String ITALICS_END = "</i>";
+    private static final class intStringBuilder {
+        private final int i;
+        private final StringBuilder sb;
+
+        public intStringBuilder(int i, StringBuilder sb) {
+            this.i = i;
+            this.sb = sb;
+        }
+
+        public int getInt() {
+            return this.i;
+        }
+
+        public StringBuilder getSB() {
+            return this.sb;
+        }
+    }
+
+    private static final String ITALICS_START = "<em>";
+    private static final String ITALICS_END = "</em>";
     private static final HashSet<String> italicized = AutoCorrect.italicizedHashSet();
 
     private static String parseChar(int c, boolean isRTL) {
@@ -27,14 +45,17 @@ public class FormatText {
     }
 
     public static void main(String[] args) throws IOException {
-        printFixedText(new BufferedReader(new InputStreamReader(System.in)));
+        StringBuilder out = new StringBuilder();
+        buildFixedText(new BufferedReader(new InputStreamReader(System.in)), out);
+        String output = out.toString().replace(String.format("%s %s", ITALICS_END, ITALICS_START), " ");
+        System.out.print(output.replace(" " + ITALICS_END, ITALICS_END + " "));
     }
 
-    private static void printFixedText(BufferedReader in) throws IOException {
+    private static void buildFixedText(BufferedReader in, StringBuilder out) throws IOException {
         StringBuilder sb = new StringBuilder();
         for (int c = in.read(), prev = -1; c != -1; prev = c, c = in.read()) {
             if (Character.isWhitespace(prev) && ((char) c == '-' || (char) c == '–')) {
-                c = handleHebrewQuotations(in); // NOSONAR
+                c = handleHebrewQuotations(in, out); // NOSONAR
             }
             if (Character.isAlphabetic(c) || (char) c == '\'') {
                 sb.append((char) c);
@@ -44,7 +65,7 @@ public class FormatText {
             if (italicized.contains(prevWord)) {
                 prevWord = italicizeString(prevWord);
             }
-            System.out.printf("%s%s", prevWord, parseChar(c, false));
+            out.append(String.format("%s%s", prevWord, parseChar(c, false)));
             sb.setLength(0);
             if ((char) c == '?' || (char) c == '!') {
                 prev = in.read();
@@ -53,30 +74,29 @@ public class FormatText {
                     sb.append((char) prev);
                 } else {
                     if ((char) prev == '\r' || (char) prev == '\n') {
-                        System.out.print("</p><p>");
+                        out.append("</p><p>");
                     } else {
-                        System.out.printf("%c", prev);
+                        out.append(String.format("%c", prev));
                     }
                     c = Character.toUpperCase(c);
                 }
                 if (Character.isAlphabetic(c)) {
                     sb.append((char) c);
                 } else if ((char) c == '\r' || (char) c == '\n') {
-                    System.out.print("</p><p>");
+                    out.append("</p><p>");
                 } else {
-                    System.out.printf("%c", c);
+                    out.append(String.format("%c", c));
                 }
-
             }
         }
         String prevWord = AutoCorrect.makeReplacement(sb.toString());
         if (italicized.contains(prevWord)) {
             prevWord = italicizeString(prevWord);
         }
-        System.out.print(prevWord);
+        out.append(prevWord);
     }
 
-    private static int handleHebrewQuotations(BufferedReader in) throws IOException {
+    private static int handleHebrewQuotations(BufferedReader in, StringBuilder out) throws IOException {
         int cNew = in.read();
         StringBuilder whitespace = new StringBuilder();
         boolean hasNewLine = false;
@@ -86,15 +106,15 @@ public class FormatText {
             cNew = in.read();
         }
         if (hasNewLine && Character.UnicodeBlock.of(cNew) == Character.UnicodeBlock.HEBREW) {
-            return handleDashNewlineAndHebrew(in, cNew);
+            return handleDashNewlineAndHebrew(in, cNew, out);
         }
-        handleDashNoHebrewQuote(whitespace.toString());
+        handleDashNoHebrewQuote(whitespace.toString(), out);
         return cNew;
     }
 
-    private static int handleDashNewlineAndHebrew(BufferedReader in, int c) throws IOException {
-        System.out.printf("%n%s%c", "<p dir=\"rtl\"> ", c);
-        // System.out.printf("%n%s%c", "<p dir=\"rtl\"> dir=\"rtl\"", c);
+    private static int handleDashNewlineAndHebrew(BufferedReader in, int c, StringBuilder out) throws IOException {
+        out.append(String.format("%n%s%c", "<p dir=\"rtl\"> ", c));
+        // out.append(String.format("%n%s%c", "<p dir=\"rtl\"> dir=\"rtl\"", c);
         for (c = in.read(); Character.UnicodeBlock.of(c) == Character.UnicodeBlock.HEBREW || isPunctuation(c)
                 || Character.isWhitespace(c); c = in.read()) {
             if ((char) c == '\n' || (char) c == '\r') {
@@ -103,20 +123,20 @@ public class FormatText {
                     cNext = in.read();
                 }
                 if (Character.UnicodeBlock.of(cNext) == Character.UnicodeBlock.HEBREW) {
-                    System.out.print("<br>");
+                    out.append("<br>");
                 } else {
-                    System.out.print("</p><p>");
+                    out.append("</p><p>");
                     return cNext;
                 }
                 c = cNext;
             }
-            System.out.print(parseChar(c, true));
+            out.append(parseChar(c, true));
         }
-        System.out.print("</p><p>");
+        out.append("</p><p>");
         return c;
     }
 
-    private static void handleDashNoHebrewQuote(String whitespace) {
+    private static void handleDashNoHebrewQuote(String whitespace, StringBuilder out) {
         StringBuilder newWS = new StringBuilder(whitespace.length() + 3);
         for (int i = 0; i < whitespace.length(); i++) {
             if (whitespace.charAt(i) == '\n' || whitespace.charAt(i) == '\r') {
@@ -125,6 +145,6 @@ public class FormatText {
                 newWS.append(whitespace.charAt(i));
             }
         }
-        System.out.printf("%s%s", '-', newWS.toString());
+        out.append(String.format("%s%s", '-', newWS.toString()));
     }
 }
