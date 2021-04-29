@@ -5,24 +5,6 @@ import java.util.HashSet;
 
 public class FormatText {
 
-    private static final class intStringBuilder {
-        private final int i;
-        private final StringBuilder sb;
-
-        public intStringBuilder(int i, StringBuilder sb) {
-            this.i = i;
-            this.sb = sb;
-        }
-
-        public int getInt() {
-            return this.i;
-        }
-
-        public StringBuilder getSB() {
-            return this.sb;
-        }
-    }
-
     private static final String ITALICS_START = "<em>";
     private static final String ITALICS_END = "</em>";
     private static final HashSet<String> italicized = AutoCorrect.italicizedHashSet();
@@ -70,6 +52,13 @@ public class FormatText {
             if ((char) c == '?' || (char) c == '!') {
                 prev = in.read();
                 c = in.read();
+                if (prev == -1) {
+                    return;
+                }
+                if (c == -1) {
+                    out.append(prev);
+                    return;
+                }
                 if (Character.isAlphabetic(prev)) {
                     sb.append((char) prev);
                 } else {
