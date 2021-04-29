@@ -14,7 +14,7 @@ public class FormatText {
         if (ch.equals("\n") || ch.equals("\r")) {
             ch = isRTL ? "<br>" : "<p>";
         }
-        return ch;
+        return ch.replace("\u00A0", " "); // replace non-breaking spaces
     }
 
     private static boolean isPunctuation(int c) {
