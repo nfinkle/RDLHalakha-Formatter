@@ -171,7 +171,7 @@ def sefaria_asks():
     texts["Eliyah Rabbah on Shulchan Arukh, Orach Chayim"] = [
         "Eliyah Rabah OC", "Eliyah Rabah", "Eliyah Rabbah", "Eliyah Rabbah OC"]
 
-    for name in ["Tur", "Beit Yosef", "Arukh HaShulchan", "Darkei Moshe", "Darchei Moshe"]:
+    for name in ["Tur", "Beit Yosef", "Arukh HaShulchan", "Darkei Moshe", "Darchei Moshe", "Kaf HaChayim"]:
         texts[f"{name}, Orach Chaim"] = [f"{name}, Orach Chayim", f"{name} OC"]
         texts[f"{name}, Yoreh Deah"] = [f"{name}, Yoreh De'ah", f"{name} YD"]
     for tur, abbre in turim.items():
