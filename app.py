@@ -155,8 +155,12 @@ def format_term(term):
         return "Bi" + compounds[0][2:].title()
     if compounds[1] == "de'titlecase":
         return "De" + compounds[0][2:].title()
+    if compounds[1] == "le'titlecase":
+        return "Le" + compounds[0][2:].title()
     if compounds[1] == "ha'titlecase":
         return "Ha" + compounds[0][2:].title()
+    if compounds[1] == "mi'titlecase":
+        return "Mi" + compounds[0][2:].title()
     if compounds[1] == "she'titlecase":
         return "She" + compounds[0][3:].title()
     return " ".join(compounds)
@@ -170,22 +174,28 @@ def sefaria_asks():
 
     texts["Eliyah Rabbah on Shulchan Arukh, Orach Chayim"] = [
         "Eliyah Rabah OC", "Eliyah Rabah", "Eliyah Rabbah", "Eliyah Rabbah OC"]
+    texts["Sha'arei Teshuvah on Shulchan Arukh, Orach Chayim"] = [
+        "Sha'arei Teshuva, OC", "Sha'arei Teshuva OC", "Sha'arei Teshuvah, OC", "Sha'arei Teshuvah OC"]
 
-    for name in ["Tur", "Beit Yosef", "Arukh HaShulchan", "Darkei Moshe", "Darchei Moshe", "Kaf HaChayim"]:
+    for name in ["Tur", "Beit Yosef", "Arukh HaShulchan",  "Kaf HaChayim"]:
         texts[f"{name}, Orach Chaim"] = [f"{name}, Orach Chayim", f"{name} OC"]
         texts[f"{name}, Yoreh Deah"] = [f"{name}, Yoreh De'ah", f"{name} YD"]
     for tur, abbre in turim.items():
-        if abbre != "OC"and abbre != "YD":  # if not OC nor YD
+        texts[f"Darchei Moshe, {tur}"] = [
+            f"Darchei Moshe {abbre}", f"Darkhei Moshe {abbre}", f"Darkei Moshe {abbre}"]
+        texts[f"Be'er Hetev on Shulchan Arukh, {tur}"] = [
+            f"Be'er Hetev, {tur}", f"Be'er Hetev {abbre}", f"Be'er Hetev, {abbre}", f"Be'eir Heiteiv, {tur}", f"Be'eir Heiteiv {abbre}", f"Be'er Heiteiv, {abbre}", f"Be'eir Heiteiv on Shulchan Arukh, {tur}"]
+        texts[f"Rabbi Akiva Eiger on Shulchan Arukh, {tur}"] = [
+            f"Rabbi Akiva Eiger {abbre}", f"Rabbi Akiva Eiger, {abbre}"]
+        if abbre != "OC" and abbre != "YD":  # if not OC nor YD
             texts[f"Tur, {tur}"] = [f"Tur {tur}", f"Tur {abbre}"]
             texts[f"Beit Yosef, {tur}"] = [
                 f"Beit Yosef {tur}", f"Beit Yosef {abbre}"]
             texts[f"Arukh HaShulchan, {tur}"] = [
                 f"Arukh HaShulchan {abbre}"]
-            texts[f"Darchei Moshe, {tur}"] = [
-                f"Darchei Moshe {abbre}"]
-            texts[f"Darkei Moshe, {tur}"] = [
-                f"Darkei Moshe {abbre}"]
-            texts[f"Shakh on Shulchan Arukh, {tur}"] = [f"Shakh {abbre}"]
+        if abbre != "OC":
+            texts[f"Pithei Teshuva on Shulchan Arukh, {tur}"] = [
+                f"Pithei Teshuva, {abbre}", f"Pithei Teshuva {abbre}", f"Pitchei Teshuva, {abbre}", f"Pitchei Teshuva {abbre}"]
     return render_template("/sefaria_asks.html", texts=OrderedDict(sorted(texts.items())))
 
 
