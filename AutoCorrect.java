@@ -417,8 +417,8 @@ public class AutoCorrect {
     private static final String SHINUY = "shinuy";
     private static final String SHITAH = "shitah";
     private static final String SHITOT = "shitot";
-    private static final String SHIVA = "shiva";
-    private static final String SHIVA__TITLECASE = "Shiva";
+    private static final String SHIVAH = "shivah";
+    private static final String SHIVAH__TITLECASE = "Shivah";
     private static final String SHOKHEIN__TITLECASE = "Shokhein";
     private static final String SHULCHAN__TITLECASE = "Shulchan";
     private static final String SHULCHAN___ARUKH__TITLECASE = "Shulchan Arukh";
@@ -563,7 +563,7 @@ public class AutoCorrect {
                 SHA_AT, SHA_AT__TITLECASE, SHEBIKDUSHAH, SHEHAKOL__SHE_TITLECASE, SHEINI, SHEKHINAH__TITLECASE,
                 SHEKIAH__TITLECASE, SHEKIAT__TITLECASE, SHELISHI, SHELISHIT__TITLECASE, SHEMIRAH, SHEMIRAT,
                 SHEMONEH__TITLECASE, SHETAR, "sheva", SHEVA__TITLECASE, "shevach", "shevakh", SHEVUT, SHINUY, SHITAH,
-                SHITOT, SHIVA, SHIVA__TITLECASE, SHOKHEIN__TITLECASE, "shul", SHULCHAN__TITLECASE,
+                SHITOT, SHIVAH, SHIVAH__TITLECASE, SHOKHEIN__TITLECASE, "shul", SHULCHAN__TITLECASE,
                 SHULCHAN___ARUKH__TITLECASE, SIFREI, SIFREI__TITLECASE, SIFRI__TITLECASE, "siluk", SIMAN, SIMCHAH,
                 SKHAR, SNIF, SOLEDET, SOFEIR, SOFER__TITLECASE, SOTAH__TITLECASE, "sugya", "sugyot", "Sugyot", TA_AM,
                 TA_AMEI, TA_ANIT, TA_ANIT__TITLECASE, TA_AROVET, TACHANUN__TITLECASE, TAKANAH, TAKANAT,
@@ -2670,10 +2670,10 @@ public class AutoCorrect {
                 return SHEVUT;
             case "shinnuy":
                 return SHINUY;
-            case "shivah":
-                return SHIVA;
-            case "Shivah":
-                return SHIVA__TITLECASE;
+            case "shiva":
+                return SHIVAH;
+            case "Shiva":
+                return SHIVAH__TITLECASE;
             case "shochein":
             case "Shochein":
             case "shokhein":
