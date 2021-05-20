@@ -16,7 +16,7 @@ db = SQLAlchemy(app)
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 q = rq.Queue(connection=worker.conn)
 
-db.create_all()
+
 @app.route('/health', methods=['GET'])
 def health():
     return "I'm online"
@@ -212,18 +212,25 @@ def add_word():
         abort(404, "Did not include word or italicized")
     correct_spelling = request.args.get("correct_spelling")
     _addWord(word, italicized, correct_spelling)
-    return f"Added ({word}, {italicized}, {correct_spelling}"
+    return f"Added ({word}, {italicized}, {correct_spelling})"
 
 
 def _addWord(word: str, italicized: bool, correct_spelling: str = None):
-    print(f"Adding ({word}, {italicized}, {correct_spelling}")
+    print(f"Adding ({word}, {italicized}, {correct_spelling})")
     db.session.add(DB_Entry(word, italicized, correct_spelling))
     db.session.commit()
 
 
 @app.route('/show_db')
 def show_db():
-    return jsonify(DB_Entry.query.all())
+    d = {}
+    for word in DB_Entry.query.all():
+        spelling = word.correct_spelling
+        if spelling in d.keys():
+            d[spelling].append(word.word)
+        else:
+            d[spelling] = [word.word]
+    return jsonify(d)
 
 
 def look_up(spelling):
@@ -242,8 +249,6 @@ class DB_Entry(db.Model):
         self.italicized = italicized
         self.correct_spelling = correct_spelling
 
-
-db.create_all()
 
 if __name__ == "__main__":
     app.run(debug=True, development=True)
