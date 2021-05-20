@@ -12,10 +12,11 @@ app = Flask(__name__)
 app.secret_key = os.urandom(64)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://qhofauqprqwnbf:1df14c58e7da5c5ef27824a5e7d35459a014ba6624ba9677aa568c8b0b6a6cac@ec2-35-174-35-242.compute-1.amazonaws.com:5432/dfqukk8b3bu2ks"
 db = SQLAlchemy(app)
+
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 q = rq.Queue(connection=worker.conn)
 
-
+db.create_all()
 @app.route('/health', methods=['GET'])
 def health():
     return "I'm online"
@@ -211,6 +212,7 @@ def add_word():
         abort(404, "Did not include word or italicized")
     correct_spelling = request.args.get("correct_spelling")
     _addWord(word, italicized, correct_spelling)
+    return f"Added ({word}, {italicized}, {correct_spelling}"
 
 
 def _addWord(word: str, italicized: bool, correct_spelling: str = None):
@@ -240,6 +242,8 @@ class DB_Entry(db.Model):
         self.italicized = italicized
         self.correct_spelling = correct_spelling
 
+
+db.create_all()
 
 if __name__ == "__main__":
     app.run(debug=True, development=True)
