@@ -223,14 +223,20 @@ def _addWord(word: str, italicized: bool, correct_spelling: str = None):
 
 @app.route('/show_db')
 def show_db():
-    d = {}
+    alt_spellings = {}
+    italicized_words = []
     for word in DB_Entry.query.all():
         spelling = word.correct_spelling
-        if spelling in d.keys():
-            d[spelling].append(word.word)
+        if spelling in alt_spellings.keys():
+            alt_spellings[spelling].append(word.word)
         else:
-            d[spelling] = [word.word]
-    return jsonify(d)
+            alt_spellings[spelling] = [word.word]
+            if word.italicized:
+                italicized_words.append(spelling)
+
+    suggestions = sum([len(values) for _, values in alt_spellings.items()])
+
+    return render_template('autocorrected_words.html', corrected=alt_spellings,  italicized=italicized_words, num_words=len(alt_spellings.keys()), num_suggestions=suggestions)
 
 
 def look_up(spelling):
