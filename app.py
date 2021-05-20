@@ -10,7 +10,7 @@ from collections import OrderedDict
 
 app = Flask(__name__)
 app.secret_key = os.urandom(64)
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://qhofauqprqwnbf:1df14c58e7da5c5ef27824a5e7d35459a014ba6624ba9677aa568c8b0b6a6cac@ec2-35-174-35-242.compute-1.amazonaws.com:5432/dfqukk8b3bu2ks"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://qhofauqprqwnbf:1df14c58e7da5c5ef27824a5e7d35459a014ba6624ba9677aa568c8b0b6a6cac@ec2-35-174-35-242.compute-1.amazonaws.com:5432/dfqukk8b3bu2ks"
 db = SQLAlchemy(app)
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 q = rq.Queue(connection=worker.conn)
