@@ -1,4 +1,5 @@
-from flask import Flask, request, render_template, jsonify
+from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, abort, request, render_template, jsonify
 import worker
 import rq
 import time
@@ -9,6 +10,9 @@ from collections import OrderedDict
 
 app = Flask(__name__)
 app.secret_key = os.urandom(64)
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://qhofauqprqwnbf:1df14c58e7da5c5ef27824a5e7d35459a014ba6624ba9677aa568c8b0b6a6cac@ec2-35-174-35-242.compute-1.amazonaws.com:5432/dfqukk8b3bu2ks"
+db = SQLAlchemy(app)
+SQLALCHEMY_TRACK_MODIFICATIONS = False
 q = rq.Queue(connection=worker.conn)
 
 
@@ -197,6 +201,44 @@ def sefaria_asks():
             texts[f"Pithei Teshuva on Shulchan Arukh, {tur}"] = [
                 f"Pithei Teshuva, {abbre}", f"Pithei Teshuva {abbre}", f"Pitchei Teshuva, {abbre}", f"Pitchei Teshuva {abbre}"]
     return render_template("/sefaria_asks.html", texts=OrderedDict(sorted(texts.items())))
+
+
+@app.route('/add_word')
+def add_word():
+    word = request.args.get("word")
+    italicized = request.args.get("italicized", type=inputs.boolean)
+    if word is None or italicized is None:
+        abort(404, "Did not include word or italicized")
+    correct_spelling = request.args.get("correct_spelling")
+    _addWord(word, italicized, correct_spelling)
+
+
+def _addWord(word: str, italicized: bool, correct_spelling: str = None):
+    print(f"Adding ({word}, {italicized}, {correct_spelling}")
+    db.session.add(DB_Entry(word, italicized, correct_spelling))
+    db.session.commit()
+
+
+@app.route('/show_db')
+def show_db():
+    return jsonify(DB_Entry.query.all())
+
+
+def look_up(spelling):
+    return DB_Entry.query.filter(DB_Entry.word == spelling).one_or_none()
+
+
+class DB_Entry(db.Model):
+    # __tablename__ = 'words'
+
+    word = db.Column(db.String, primary_key=True)
+    italicized = db.Column(db.Boolean)
+    correct_spelling = db.Column(db.String)
+
+    def __init__(self, word: str, italicized: bool, correct_spelling: str = None):
+        self.word = word
+        self.italicized = italicized
+        self.correct_spelling = correct_spelling
 
 
 if __name__ == "__main__":
