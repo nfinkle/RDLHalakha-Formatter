@@ -221,6 +221,17 @@ def _addWord(word: str, italicized: bool, correct_spelling: str = None):
     db.session.commit()
 
 
+@app.route('/import_from_document')
+def import_from_document():
+    DB_Entry.query.delete()  # delete all stuff in the table
+    italicized_words, alt_spellings = parse_auto_correct_file(True)
+    for correct_word in alt_spellings.keys():
+        italicized = correct_word in italicized_words
+        for alt_spell in alt_spellings[correct_word]:
+            _addWord(alt_spell, italicized, correct_word)
+    return show_db()
+
+
 @app.route('/show_db')
 def show_db():
     alt_spellings = {}
