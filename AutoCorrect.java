@@ -368,7 +368,7 @@ public class AutoCorrect {
     private static final String RISHONIM__TITLECASE = "Rishonim";
     private static final String ROSH_TITLECASE = "Rosh";
     private static final String SAFEIK = "safeik";
-    private static final String SEIF = "se'if";
+    private static final String SE_IF = "se'if";
     private static final String SEFER = "sefer";
     private static final String SEFER__TITLECASE = "Sefer";
     private static final String SEFARIM = "sefarim";
@@ -404,7 +404,7 @@ public class AutoCorrect {
     private static final String SHEKIAT__TITLECASE = "Shekiat";
     private static final String SHELISHI = "shelishi";
     private static final String SHELISHIT__TITLECASE = "Shelishit";
-    private static final String SHELITA = "שליט\"א";
+    private static final String שליטא = "שליט\"א";
     private static final String SHEMA__TITLECASE = "Shema";
     private static final String SHEMINI__TITLECASE = "Shemini";
     private static final String SHEMIRAH = "shemirah";
@@ -557,7 +557,7 @@ public class AutoCorrect {
                 PESAK__TITLECASE, PESUKEI__TITLECASE, PESUKIM, PIDYON__TITLECASE, PIKUACH, PIRKEI__TITLECASE, "pirsum",
                 "pirsumei", PITCHEI__TITLECASE, PLAG__TITLECASE, POSKIM, PRI__TITLECASE, RABIM, REFUAH,
                 REISH__TITLECASE, REISHA, RETZEIH__TITLECASE, "rishon", RISHONIM__TITLECASE, RITVA__TITLECASE, "rov",
-                "Rov", SAFEIK, SEFER, SEFER__TITLECASE, SEFARIM, SEFIRAT__TITLECASE, SEIF, SEGOL__TITLECASE, SEKILAH,
+                "Rov", SAFEIK, SEFER, SEFER__TITLECASE, SEFARIM, SEFIRAT__TITLECASE, SE_IF, SEGOL__TITLECASE, SEKILAH,
                 SELICHOT__TITLECASE, SEUDAH, SEUDAH__TITLECASE, SEUDAT, SEUDAT__TITLECASE, SEUDOT, SEUDOT__TITLECASE,
                 SEVARA, SHAKH__TITLECASE, SHALIACH, SHALIACH__TITLECASE, "shas", "Shas", SHA_AH, SHA_AH__TITLECASE,
                 SHA_AT, SHA_AT__TITLECASE, SHEBIKDUSHAH, SHEHAKOL__SHE_TITLECASE, SHEINI, SHEKHINAH__TITLECASE,
@@ -2385,7 +2385,7 @@ public class AutoCorrect {
             case "S'firat":
                 return SEFIRAT__TITLECASE;
             case "seif":
-                return SEIF;
+                return SE_IF;
             case "segol":
             case "seggol":
             case "Seggol":
@@ -2612,7 +2612,7 @@ public class AutoCorrect {
             case "Sh'lita":
             case "sh'litah":
             case "Sh'litah":
-                return SHELITA;
+                return שליטא;
             case "shema":
             case "shma":
             case "Shma":
@@ -2658,7 +2658,6 @@ public class AutoCorrect {
             case "shtar":
             case "sh'tar":
                 return SHETAR;
-            case "sheva":
             case "shevah":
             case "Shevah":
                 return SHEVA__TITLECASE;
