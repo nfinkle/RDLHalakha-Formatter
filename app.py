@@ -1,5 +1,6 @@
+from flask.helpers import url_for
 from flask_sqlalchemy import SQLAlchemy
-from flask import Flask, abort, request, render_template, jsonify
+from flask import Flask, abort, redirect, request, render_template, jsonify
 import os
 from flask_restx import inputs
 from collections import OrderedDict
@@ -67,7 +68,27 @@ def sefaria_asks():
     return render_template("/sefaria_asks.html", texts=OrderedDict(sorted(texts.items())))
 
 
-@app.route('/add_word')
+@app.route('/add_spellings')
+def new_spellings():
+    return render_template('add_spellings.html')
+
+
+@app.route('/add_word_spellings', methods=['POST'])
+def add_spellings():
+    json = request.get_json()
+    word = json.get("word")
+    spellings = json.get("spellings")
+    if word is None or spellings is None:
+        abort(404, "Need Word and Spellings arguments")
+    italicize = json.get("italicize")
+
+    for alt_spelling in spellings:
+        _addWord(alt_spelling, italicize, word)
+    print(f"Added {word} with spellings {spellings}")
+    return jsonify("Success")
+
+
+@app.route('/add_word', methods=["POST"])
 def add_word():
     word = request.args.get("word")
     italicized = request.args.get("italicized", type=inputs.boolean)
@@ -75,6 +96,7 @@ def add_word():
         abort(404, "Did not include word or italicized")
     correct_spelling = request.args.get("correct_spelling")
     _addWord(word, italicized, correct_spelling)
+    print(f"Added ({word}, {italicized}, {correct_spelling})")
     return f"Added ({word}, {italicized}, {correct_spelling})"
 
 
@@ -82,25 +104,6 @@ def _addWord(word: str, italicized: bool, correct_spelling: str = None):
     print(f"Adding ({word}, {italicized}, {correct_spelling})")
     db.session.add(DB_Entry(word, italicized, correct_spelling))
     db.session.commit()
-
-
-@app.route('/import_from_document')
-def import_from_document():
-    DB_Entry.query.delete()  # delete all stuff in the table
-    inserted_words = {}
-    italicized_words, alt_spellings = parse_auto_correct_file(True)
-    for correct_word in alt_spellings.keys():
-        italicized = correct_word in italicized_words
-        if correct_word not in inserted_words:
-            db.session.add(DB_Entry(correct_word, italicized))
-            inserted_words[correct_word] = ""
-        for alt_spell in alt_spellings[correct_word]:
-            db.session.add(DB_Entry(alt_spell, italicized, correct_word))
-    for word in italicized_words:
-        if word not in inserted_words:
-            db.session.add(DB_Entry(word, True))
-    db.session.commit()
-    return autocorrected_words()
 
 
 @app.route('/autocorrected-words')

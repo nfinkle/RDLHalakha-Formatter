@@ -4,6 +4,25 @@ import time
 q = rq.Queue(connection=worker.conn)
 
 
+# @app.route('/import_from_document')
+def import_from_document():
+    DB_Entry.query.delete()  # delete all stuff in the table
+    inserted_words = {}
+    italicized_words, alt_spellings = parse_auto_correct_file(True)
+    for correct_word in alt_spellings.keys():
+        italicized = correct_word in italicized_words
+        if correct_word not in inserted_words:
+            db.session.add(DB_Entry(correct_word, italicized))
+            inserted_words[correct_word] = ""
+        for alt_spell in alt_spellings[correct_word]:
+            db.session.add(DB_Entry(alt_spell, italicized, correct_word))
+    for word in italicized_words:
+        if word not in inserted_words:
+            db.session.add(DB_Entry(word, True))
+    _commitDB()
+    return autocorrected_words()
+
+
 def runner(text):
     import os
     with open("RDLH_in.txt", "w") as input_text:

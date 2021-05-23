@@ -38,7 +38,7 @@
                     {{ result }}:
                     {% if result in italicized %} </em>{%endif %}&nbsp;
             </span>
-            {% for from_word in pre_arr %}
+            {% for from_word in pre_arr|sort %}
             {{ from_word }}{{ ", " if not loop.last }}
             {% endfor %}
         </p>
