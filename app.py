@@ -1,8 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, abort, request, render_template, jsonify
-import worker
-import rq
-import time
 import os
 from flask_restx import inputs
 from collections import OrderedDict
@@ -12,9 +9,6 @@ app = Flask(__name__)
 app.secret_key = os.urandom(64)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://qhofauqprqwnbf:1df14c58e7da5c5ef27824a5e7d35459a014ba6624ba9677aa568c8b0b6a6cac@ec2-35-174-35-242.compute-1.amazonaws.com:5432/dfqukk8b3bu2ks"
 db = SQLAlchemy(app)
-
-# SQLALCHEMY_TRACK_MODIFICATIONS = False
-q = rq.Queue(connection=worker.conn)
 
 
 @app.route('/health', methods=['GET'])
@@ -30,7 +24,7 @@ def handle_bad_request(e):
 
 @app.route('/', methods=['GET'])
 def format_page():
-    return render_template('RDLH.html')
+    return render_template('formatter.html')
 
 
 @app.route('/italicized-words')
@@ -242,7 +236,6 @@ def _parseChar(c: str, isRTL: bool) -> str:
 
 
 def handleHebrewQuotations(text: str):
-    print(f"handling hebrew quotation now with text {text}")
     i = 0
     c = text[i]
     whitespace = ""
@@ -255,12 +248,8 @@ def handleHebrewQuotations(text: str):
         i += 1
         c = text[i]
     if hasNewLine and isHebrewLetter(c) and i < len(text):
-        print(f"i:{i}, text[i:]{text[i:]}")
-        i, out = handleDashNewlineAndHebrew(text[i:], c)
-        print(f"Returning {i}, {out} with text {text[i:]}")
-        return i, out
+        return handleDashNewlineAndHebrew(text[i:], c)
     out = handleDashNoHebrewQuote(whitespace)
-    print(f"Returning {i}, {out} with text {text[i:]}")
     return i, out
 
 
@@ -286,7 +275,6 @@ def handleDashNewlineAndHebrew(text: str, c: str):
         c = None if i == len(text) else text[i]
     if i == len(text):
         i = 0
-    print(f"Returning from dashNewLine {c}, {out}")
     return i, out + "</p><p>"
 
 
