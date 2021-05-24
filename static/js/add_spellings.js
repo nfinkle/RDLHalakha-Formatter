@@ -35,6 +35,10 @@ function addSpellings() {
 					$('button').prop("disabled", false);
 				}
 			}
+            else {
+                $(".alert").alert();
+                alert("You already added " + word + " to the database");
+            }
 		},
 		success: function (result) {
 			console.log(result);

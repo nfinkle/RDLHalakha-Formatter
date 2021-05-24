@@ -78,8 +78,8 @@ def add_spellings():
     json = request.get_json()
     word = json.get("word")
     spellings = json.get("spellings")
-    if word is None or spellings is None:
-        abort(404, "Need Word and Spellings arguments")
+    if not word:
+        abort(404, "Need Word argument")
     italicize = json.get("italicize")
 
     for alt_spelling in spellings:
@@ -141,8 +141,10 @@ def autocorrected_words():
     alt_spellings = {}
     italicized_words = []
     for entry in DB_Entry.query.all():
+        word = entry.word
         spelling = entry.correct_spelling
-        if spelling is None:
+        if not word or not spelling:
+            italicized_words.append(spelling if word is None else word)
             continue
         if spelling in alt_spellings:
             alt_spellings[spelling].append(entry.word)
