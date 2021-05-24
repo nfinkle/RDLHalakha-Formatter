@@ -29,6 +29,9 @@ function format() {
 					$('button').prop("disabled", false);
 				}
 			}
+			else {
+				console.log(error);
+			}
 		},
 		success: function (result) {
 			console.log(result);

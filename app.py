@@ -117,7 +117,7 @@ def delete_spelling():
     if spelling is None:
         abort(404, "no spelling received")
     _deleteSpellingAndCommit(spelling)
-    return "Success!"
+    return jsonify("Success!")
 
 
 def _deleteSpelling(spelling: str):

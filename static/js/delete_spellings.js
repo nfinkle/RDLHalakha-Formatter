@@ -1,8 +1,8 @@
 function deleteSpelling(spelling) {
-	$.ajax({
+	return new Promise(function(resolve,reject) {
+		$.ajax({
 		url: "/delete_spelling",
 		type: "POST",
-		async: true,
 		cache: false,
 		contentType: 'application/json',
 		dataType: 'json',
@@ -18,18 +18,24 @@ function deleteSpelling(spelling) {
 				if (this.moreTries > 0) {
 					console.log("Trying again.")
 					$.ajax(this);
-					return;
+					reject(error);
 				}
 				else {
 					console.log(error);
 					$('button').prop("disabled", false);
+					reject(error);
 				}
+			}
+			else {
+				console.log(error);
+				reject(error);
 			}
 		},
 		success: function (result) {
 			console.log(result);
             location.reload();
+			resolve(result);
 		}
 	})
-    return false;
+});
 }
