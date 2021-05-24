@@ -12,6 +12,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
         integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
         crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/scrollbutton.css')}}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/scrollbutton.js')}}"></script>
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico')}}">
 </head>
 
@@ -60,6 +62,7 @@
         </p>
         {% endfor %}
     </div>
+    <button id="toTop" onclick="document.body.scrollTop = document.documentElement.scrollTop = 0;">Top</button>
     <script>
         anchors.options = {
             visible: 'always',

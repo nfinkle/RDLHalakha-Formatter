@@ -7,6 +7,8 @@
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/scrollbutton.css')}}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/scrollbutton.js')}}"></script>
 </head>
 
 <body>
@@ -35,4 +37,6 @@
         <em>{{ word }}</em><br>
         {% endfor %}
     </div>
+    <button id="toTop" onclick="document.body.scrollTop = document.documentElement.scrollTop = 0;">Top</button>
+
 </body>
