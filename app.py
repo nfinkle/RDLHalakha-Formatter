@@ -30,7 +30,7 @@ def format_page():
 
 @app.route('/italicized-words')
 def italicized_words():
-    words = [entry.correct_spelling for entry in DB_Entry.query.filter(
+    words = [entry.correct_spelling if entry.correct_spelling else entry.word for entry in DB_Entry.query.filter(
         DB_Entry.italicized == True)]
     sorted_words = []
     for word in words:
@@ -86,8 +86,14 @@ def add_spellings():
         abort(404, "Need Word argument")
     italicize = json.get("italicize")
 
-    for alt_spelling in spellings:
-        _addWord(alt_spelling, italicize, word)
+    if _lookup(word) is None:
+        _addWord(word, italicize)
+
+    if spellings == [""]:
+        _addWord(word, italicize)
+    else:
+        for alt_spelling in spellings:
+            _addWord(alt_spelling, italicize, word)
     _commitDB()
     print(f"Added {word} with spellings {spellings}")
     return jsonify("Success")
@@ -195,7 +201,7 @@ def makeReplacement(word: str) -> str:
     entry = _lookup(word)
     if entry is None:
         return word
-    out = entry.correct_spelling if entry.correct_spelling is not None else word
+    out = entry.correct_spelling if entry.correct_spelling else word
     if entry.italicized:
         out = italicizeWord(out)
     print(f"Replacing {word} with {out}")
@@ -250,10 +256,10 @@ def buildFixedText(text: str) -> str:
                 continue
             prev = text[i]
             i += 1
-            c = text[i]
             if (i == len(text)):
                 out += prev
                 continue
+            c = text[i]
             if prev.isalpha():
                 curStr += prev
             else:
