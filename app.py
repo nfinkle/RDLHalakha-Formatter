@@ -30,9 +30,13 @@ def format_page():
 
 @app.route('/italicized-words')
 def italicized_words():
-    words = [entry.word for entry in DB_Entry.query.filter(
+    words = [entry.correct_spelling for entry in DB_Entry.query.filter(
         DB_Entry.italicized == True)]
-    return render_template("italicized_words.html", italicized=words)
+    sorted_words = []
+    for word in words:
+        if word and word not in sorted_words:
+            sorted_words.append(word)
+    return render_template("italicized_words.html", italicized=sorted(sorted_words, key=str.casefold))
 
 
 @app.route("/sefaria-asks")
@@ -68,7 +72,7 @@ def sefaria_asks():
     return render_template("/sefaria_asks.html", texts=OrderedDict(sorted(texts.items())))
 
 
-@app.route('/add_spellings')
+@app.route('/add-spellings')
 def new_spellings():
     return render_template('add_spellings.html')
 

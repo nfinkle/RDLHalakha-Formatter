@@ -36,7 +36,6 @@ function addSpellings() {
 				}
 			}
             else {
-                $(".alert").alert();
                 alert("You already added " + word + " to the database");
             }
 		},

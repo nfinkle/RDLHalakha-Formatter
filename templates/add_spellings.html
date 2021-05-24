@@ -21,10 +21,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link" aria-current="page" href="/words">Autocorrect Glossary</a>
+                    <a class="nav-link" aria-current="page" href="/words">Glossary</a>
                     <a class="nav-link" href="/italicized-words">Italicized Words</a>
-                    <a class="nav-link" href="/sefaria-asks">Sefaria Asks</a>
                     <a class="nav-link active" href="/add-spellings">Add Spellings</a>
+                    <a class="nav-link" href="/sefaria-asks">Sefaria Asks</a>
                 </div>
             </div>
         </div>
@@ -51,11 +51,5 @@
         </form>
     </div>
 
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Duplicate Alert!</strong> This spelling already exists!
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
     <script src="{{ url_for('static', filename='js/add_spellings.js') }}"></script>
 </body>
