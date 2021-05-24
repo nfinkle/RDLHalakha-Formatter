@@ -1,3 +1,5 @@
+<script src="{{ url_for('static', filename='js/delete_spellings.js') }}"></script>
+
 <head>
     <title>Autocorrect Glossary</title>
     <script src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"></script>
@@ -38,9 +40,18 @@
                     {{ result }}:
                     {% if result in italicized %} </em>{%endif %}&nbsp;
             </span>
+        <div style="display:flex; flex-wrap:wrap;">
             {% for from_word in pre_arr|sort %}
-            {{ from_word }}{{ ", " if not loop.last }}
+            <div class="input-group w-auto ">
+                <div class="btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-primary disabled" style="border-radius: 0;">{{ from_word }}</label>
+                </div>
+                <div class="input-group-prepend">
+                    <button class="btn-danger btn" onclick='deleteSpelling("{{ from_word|e }}");'>&times;</button>
+                </div>
+            </div>{{ ", " if not loop.last }}&nbsp;
             {% endfor %}
+        </div>
         </p>
         {% endfor %}
     </div>
@@ -51,5 +62,6 @@
         };
         anchors.add('.anchored');
     </script>
+    <script src="{{ url_for('static', filename='js/delete_spellings.js') }}"></script>
 
 </body>

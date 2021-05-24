@@ -84,6 +84,7 @@ def add_spellings():
 
     for alt_spelling in spellings:
         _addWord(alt_spelling, italicize, word)
+    _commitDB()
     print(f"Added {word} with spellings {spellings}")
     return jsonify("Success")
 
@@ -95,7 +96,7 @@ def add_word():
     if word is None or italicized is None:
         abort(404, "Did not include word or italicized")
     correct_spelling = request.args.get("correct_spelling")
-    _addWord(word, italicized, correct_spelling)
+    _addWordAndCommit(word, italicized, correct_spelling)
     print(f"Added ({word}, {italicized}, {correct_spelling})")
     return f"Added ({word}, {italicized}, {correct_spelling})"
 
@@ -103,6 +104,33 @@ def add_word():
 def _addWord(word: str, italicized: bool, correct_spelling: str = None):
     print(f"Adding ({word}, {italicized}, {correct_spelling})")
     db.session.add(DB_Entry(word, italicized, correct_spelling))
+
+
+def _addWordAndCommit(word: str, italicized: bool, correct_spelling: str = None):
+    _addWord(word, italicized, correct_spelling)
+    _commitDB()
+
+
+@app.route('/delete_spelling', methods=["POST"])
+def delete_spelling():
+    spelling = request.get_json().get("spelling")
+    if spelling is None:
+        abort(404, "no spelling received")
+    _deleteSpellingAndCommit(spelling)
+    return "Success!"
+
+
+def _deleteSpelling(spelling: str):
+    print(f"Deleting spelling of {spelling}")
+    DB_Entry.query.filter(DB_Entry.word == spelling).delete()
+
+
+def _deleteSpellingAndCommit(spelling: str):
+    _deleteSpelling(spelling)
+    _commitDB()
+
+
+def _commitDB():
     db.session.commit()
 
 
