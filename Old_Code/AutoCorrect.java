@@ -366,7 +366,7 @@ public class AutoCorrect {
     private static final String RETZEIH__TITLECASE = "Retzeih";
     private static final String RITVA__TITLECASE = "Ritva";
     private static final String RISHONIM__TITLECASE = "Rishonim";
-    private static final String ROSH_TITLECASE = "Rosh";
+    private static final String ROSH__TITLECASE = "Rosh";
     private static final String SAFEIK = "safeik";
     private static final String SE_IF = "se'if";
     private static final String SEFER = "sefer";
@@ -2369,7 +2369,7 @@ public class AutoCorrect {
             case "Ritvah":
                 return RITVA__TITLECASE;
             case "rosh":
-                return ROSH_TITLECASE;
+                return ROSH__TITLECASE;
             case "safek":
                 return SAFEIK;
             case "sefeir":

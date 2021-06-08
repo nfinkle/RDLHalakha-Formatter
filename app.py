@@ -132,7 +132,10 @@ def delete_spelling():
 
 def _deleteSpelling(spelling: str):
     print(f"Deleting spelling of {spelling}")
-    DB_Entry.query.filter(DB_Entry.word == spelling).delete()
+    if _lookup(spelling):
+        DB_Entry.query.filter(DB_Entry.word == spelling).delete()
+    else:
+        abort(404, f"No such entry with spelling {spelling}")
 
 
 def _deleteSpellingAndCommit(spelling: str):
