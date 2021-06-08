@@ -77,6 +77,11 @@ def new_spellings():
     return render_template('add_spellings.html')
 
 
+@app.route('/delete-spelling-form')
+def delete_spelling_form():
+    return render_template('delete_spelling.html')
+
+
 @app.route('/add_word_spellings', methods=['POST'])
 def add_spellings():
     json = request.get_json()
@@ -131,9 +136,9 @@ def delete_spelling():
 
 
 def _deleteSpelling(spelling: str):
-    print(f"Deleting spelling of {spelling}")
     if _lookup(spelling):
         DB_Entry.query.filter(DB_Entry.word == spelling).delete()
+        print(f"Deleting spelling of {spelling}")
     else:
         abort(404, f"No such entry with spelling {spelling}")
 
