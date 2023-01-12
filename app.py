@@ -354,15 +354,18 @@ def sortDict(d: dict) -> dict:
         sorted_d[key] = d[key]
     return sorted_d
 
-# with app.app_context():
-#     import csv
-#     with open("s.tsv") as file:
-#         tsv_file = csv.reader(file, delimiter="\t")
-#         for line in tsv_file:
-#             print(*line)
-#             word, italicized, correct_spelling = line
-#             italicized = True if italicized == "True" else False
-#             print(word, italicized, correct_spelling)
-#             _addWord(word, italicized, correct_spelling)
+with app.app_context():
+    import csv
+    _deleteSpelling("\N")
+    with open("s.tsv") as file:
+        tsv_file = csv.reader(file, delimiter="\t")
+        for line in tsv_file:
+            print(*line)
+            word, italicized, correct_spelling = line
+            italicized = True if italicized == "True" else False
+            if correct_spelling != "\N":
+                continue
+            print(word, italicized)
+            _addWord(word, italicized)
 
-#     _commitDB()
+    _commitDB()
