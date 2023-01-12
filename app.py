@@ -11,7 +11,6 @@ app.secret_key = os.urandom(64)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:Pu!F^7Kq$fSv59xz@db.ktllxssxvmcdiolvzold.supabase.co:6543/postgres"
 db = SQLAlchemy(app)
 
-
 @app.route('/health', methods=['GET'])
 def health():
     return "I'm online"
@@ -109,6 +108,8 @@ def add_word():
     word = request.args.get("word")
     italicized = request.args.get("italicized", type=inputs.boolean)
     if word is None or italicized is None:
+        print(word)
+        print(italicized)
         abort(404, "Did not include word or italicized")
     correct_spelling = request.args.get("correct_spelling")
     _addWordAndCommit(word, italicized, correct_spelling)
@@ -351,3 +352,7 @@ def sortDict(d: dict) -> dict:
     for key in sorted_keys:
         sorted_d[key] = d[key]
     return sorted_d
+
+
+with app.app_context():
+    db.create_all()
