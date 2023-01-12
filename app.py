@@ -82,14 +82,15 @@ def delete_spelling_form():
 
 
 @app.route('/add_word_spellings', methods=['POST'])
-def add_spellings():
+def add_spellings_route():
     json = request.get_json()
     word = json.get("word")
     spellings = json.get("spellings")
     if not word:
         abort(404, "Need Word argument")
-    italicize = json.get("italicize")
+    return add_spellings(word, json.get("italicize"), spellings)
 
+def add_spellings(word, italicize, spellings):
     if _lookup(word) is None:
         _addWord(word, italicize)
 
@@ -353,6 +354,15 @@ def sortDict(d: dict) -> dict:
         sorted_d[key] = d[key]
     return sorted_d
 
-
 with app.app_context():
-    db.create_all()
+    import csv
+    with open("s.tsv") as file:
+        tsv_file = csv.reader(file, delimiter="\t")
+        for line in tsv_file:
+            print(*line)
+            word, italicized, correct_spelling = line
+            italicized = True if italicized == "True" else False
+            print(word, italicized, correct_spelling)
+            _addWord(word, italicized, correct_spelling)
+
+    _commitDB()
