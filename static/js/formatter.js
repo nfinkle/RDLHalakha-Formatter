@@ -10,8 +10,8 @@ function format() {
 		cache: false,
 		contentType: 'application/json',
 		dataType: 'json',
-		timeout: 10000,
-		moreTries: 15,
+		timeout: 30000,
+		moreTries: 2,
 		data: JSON.stringify({
 			"text": input,
 		}),

@@ -210,8 +210,8 @@ class DB_Entry(db.Model):
         return {"italicized": self.italicized, "word": self.word, "correct_spelling": self.correct_spelling}
 
 
-def makeReplacement(word: str) -> str:
-    entry = _lookup(word)
+def makeReplacement(word: str, entries: dict = None) -> str:
+    entry = _lookup(word) if entries is None else entries.get(word)
     if entry is None:
         return word
     out = entry.correct_spelling if entry.correct_spelling else word
@@ -242,6 +242,7 @@ def format_text():
 
 
 def buildFixedText(text: str) -> str:
+    entries = {e.word: e for e in DB_Entry.query.all()}
     out = ""
     prev = None
     c = None
@@ -261,7 +262,7 @@ def buildFixedText(text: str) -> str:
         if c.isalpha() or c == "\'":
             curStr += c
             continue
-        out += makeReplacement(curStr) + _parseChar(c, False)
+        out += makeReplacement(curStr, entries) + _parseChar(c, False)
         curStr = ""
         if (c == '?' or c == "!"):
             i += 1
@@ -282,7 +283,7 @@ def buildFixedText(text: str) -> str:
                 curStr += c
             else:
                 out += "</p><p>" if c == '\r' or c == '\n' else c
-    return out + makeReplacement(curStr)
+    return out + makeReplacement(curStr, entries)
 
 
 def _parseChar(c: str, isRTL: bool) -> str:
