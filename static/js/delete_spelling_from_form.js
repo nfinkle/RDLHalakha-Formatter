@@ -37,7 +37,7 @@ function deleteSpelling() {
 		},
 		success: function (result) {
 			console.log(result);
-            window.location.replace("http://rdlhalakha-formatter.herokuapp.com/words#" + word);
+            window.location.replace("http://rdl-halakha-formatter.onrender.com/words#" + word);
 		}
 	})
     return false;
