@@ -161,6 +161,16 @@ def _commitDB():
 @app.route('/glossary')
 @app.route('/words')
 def autocorrected_words():
+    alt_spellings, italicized_words, suggestions = get_all_words()
+
+    return render_template('autocorrected_words.html', corrected=sortDict(alt_spellings),  italicized=italicized_words, num_words=len(alt_spellings.keys()), num_suggestions=suggestions)
+
+@app.route('/_word_dump')
+def word_dump():
+    alt_spellings, italicized_words, suggestions = get_all_words()
+    return render_template('word_dump.html', corrected=sortDict(alt_spellings),  italicized=italicized_words, num_words=len(alt_spellings.keys()), num_suggestions=suggestions)
+
+def get_all_words():
     alt_spellings = {}
     italicized_words = []
     for entry in DB_Entry.query.all():
@@ -177,8 +187,7 @@ def autocorrected_words():
                 italicized_words.append(spelling)
 
     suggestions = sum([len(values) for _, values in alt_spellings.items()])
-
-    return render_template('autocorrected_words.html', corrected=sortDict(alt_spellings),  italicized=italicized_words, num_words=len(alt_spellings.keys()), num_suggestions=suggestions)
+    return alt_spellings,italicized_words,suggestions
 
 
 @app.route('/lookup_word')
