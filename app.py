@@ -186,13 +186,9 @@ def get_all_words():
             continue
         if entry.correct_spelling in alt_spellings:
             alt_spellings[entry.correct_spelling].append(entry.word)
-            # print("If", entry.__dict__)
         else:
-            # print("Else", entry.__dict__)
             alt_spellings[entry.correct_spelling] = [entry.word]
             if entry.italicized == 't' or entry.italicized:
-                # print("italicizing", word, entry.correct_spelling, entry.italicized,
-                #       entry.italicized == 't', type(entry.italicized))
                 italicized_words.append(entry.correct_spelling)
 
     suggestions = sum([len(values) for _, values in alt_spellings.items()])
