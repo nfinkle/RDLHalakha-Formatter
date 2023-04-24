@@ -165,6 +165,11 @@ def autocorrected_words():
 
     return render_template('autocorrected_words.html', corrected=sortDict(alt_spellings),  italicized=italicized_words, num_words=len(alt_spellings.keys()), num_suggestions=suggestions)
 
+@app.route('/_app_script_format')
+def app_script_format():
+    alt_spellings, italicized_words, suggestions = get_all_words()
+    return render_template('app_script_format.html', corrected=sortDict(alt_spellings),  italicized=italicized_words, num_words=len(alt_spellings.keys()), num_suggestions=suggestions)
+
 @app.route('/_word_dump')
 def word_dump():
     alt_spellings, italicized_words, suggestions = get_all_words()

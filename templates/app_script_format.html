@@ -1,0 +1,28 @@
+<head>
+  <title>Autocorrect Word Dump</title>
+  <script src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+    integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/scrollbutton.css')}}">
+  <script type="text/javascript" src="{{ url_for('static', filename='js/scrollbutton.js')}}"></script>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico')}}">
+</head>
+
+<body>
+  <div style="margin-left: 1.5em;">
+    {% for result,pre_arr in corrected.items() %}
+      {% for from_word in pre_arr|sort %}
+      <p>
+        "{{ from_word }}": ["{{ result }}", {% if result in italicized %}true{% else %}false{% endif %}],
+    </p>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</body>
