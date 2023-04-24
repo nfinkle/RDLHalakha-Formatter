@@ -180,16 +180,20 @@ def get_all_words():
     italicized_words = []
     for entry in DB_Entry.query.all():
         word = entry.word
-        spelling = entry.correct_spelling
-        if not word or not spelling:
-            italicized_words.append(spelling if word is None or word == "\\N" else word)
+        if (not word or not entry.correct_spelling):
+            if entry.italicized:
+                italicized_words.append(entry.correct_spelling if word is None or word == "\\N" else word)
             continue
-        if spelling in alt_spellings:
-            alt_spellings[spelling].append(entry.word)
+        if entry.correct_spelling in alt_spellings:
+            alt_spellings[entry.correct_spelling].append(entry.word)
+            # print("If", entry.__dict__)
         else:
-            alt_spellings[spelling] = [entry.word]
-            if entry.italicized == 't':
-                italicized_words.append(spelling)
+            # print("Else", entry.__dict__)
+            alt_spellings[entry.correct_spelling] = [entry.word]
+            if entry.italicized == 't' or entry.italicized:
+                # print("italicizing", word, entry.correct_spelling, entry.italicized,
+                #       entry.italicized == 't', type(entry.italicized))
+                italicized_words.append(entry.correct_spelling)
 
     suggestions = sum([len(values) for _, values in alt_spellings.items()])
     return alt_spellings,italicized_words,suggestions
