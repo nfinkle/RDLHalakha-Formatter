@@ -33,7 +33,7 @@ def format_page():
 @app.route('/italicized-words')
 def italicized_words():
     words = [entry.correct_spelling if entry.correct_spelling else entry.word for entry in DB_Entry.query.filter(
-        DB_Entry.italicized == True)]
+        DB_Entry.italicized == 't')]
     sorted_words = []
     for word in words:
         if word and word not in sorted_words:
@@ -182,13 +182,13 @@ def get_all_words():
         word = entry.word
         spelling = entry.correct_spelling
         if not word or not spelling:
-            italicized_words.append(spelling if word is None else word)
+            italicized_words.append(spelling if word is None or word == "\\N" else word)
             continue
         if spelling in alt_spellings:
             alt_spellings[spelling].append(entry.word)
         else:
             alt_spellings[spelling] = [entry.word]
-            if entry.italicized:
+            if entry.italicized == 't':
                 italicized_words.append(spelling)
 
     suggestions = sum([len(values) for _, values in alt_spellings.items()])
