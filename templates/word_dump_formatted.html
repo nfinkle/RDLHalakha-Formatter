@@ -22,12 +22,12 @@
       <div style="margin-left: 1.5em;">
         {% for result,pre_arr in corrected.items() %}
             {% for from_word in pre_arr|sort %}
-        <br>
+              <br>
               "{{ from_word }}": ["{{ result }}",
-              {% if result in italicized %} true{% else %} false{% endif %}],
-        <!-- </p> -->
-          {% endfor %}
-          {{ "," if not loop.last }}&nbsp;
+              {% if result in italicized %} true{% else %} false{% endif %}]
+              {{ "," if not loop.last }}&nbsp;
+            {% endfor %}
+        {{ "," if not loop.last }}&nbsp;
         {% endfor %}
       </div>
 </body>
