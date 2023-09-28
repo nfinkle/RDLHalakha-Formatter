@@ -24,10 +24,8 @@
             {% for from_word in pre_arr|sort %}
               <br>
               "{{ from_word }}": ["{{ result }}",
-              {% if result in italicized %} true{% else %} false{% endif %}]
-              {{ "," if not loop.last }}&nbsp;
+              {% if result in italicized %} true{% else %} false{% endif %}],
             {% endfor %}
-        {{ "," if not loop.last }}&nbsp;
         {% endfor %}
       </div>
 </body>
