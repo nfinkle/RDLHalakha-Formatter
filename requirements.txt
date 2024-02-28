@@ -1,7 +1,9 @@
 gunicorn
-flask
-flask_restx
+flask==2.2.2
+flask_restx == 1.2.0
 rq
 redis
-flask-sqlalchemy
+flask-sqlalchemy==3.0.3
 psycopg2
+importlib-metadata
+werkzeug ~= 2.0
